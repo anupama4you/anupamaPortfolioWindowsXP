@@ -1,38 +1,48 @@
-import React, { useEffect, useRef } from 'react';
-import Webamp from 'webamp';
-import { initialTracks } from './config';
+import React, { useEffect, useRef } from "react";
+import Webamp from "webamp";
+import { initialTracks } from "./config";
 
-function Winamp({ onClose, onMinimize }) {
-  const ref = useRef(null);
-  const webamp = useRef(null);
+export default function Winamp({ onClose, onMinimize }) {
+  const containerRef = useRef(null);
+  const webampRef = useRef(null);
+  const didInit = useRef(false);
+
+  // Create & render once
   useEffect(() => {
-    const target = ref.current;
-    if (!target) {
-      return;
-    }
-    webamp.current = new Webamp({
-      initialTracks,
-    });
-    webamp.current.renderWhenReady(target).then(() => {
-      target.appendChild(document.querySelector('#webamp'));
-    });
+    const container = containerRef.current;
+    if (!container || didInit.current) return;
+    didInit.current = true;
+
+    const wa = new Webamp({ initialTracks });
+    webampRef.current = wa;
+
+    // Render directly into our container (don't move the DOM afterwards)
+    wa.renderWhenReady(container);
+
     return () => {
-      webamp.current.dispose();
-      webamp.current = null;
+      try {
+        webampRef.current?.dispose?.();
+      } catch (_) {
+        // ignore if already disposed
+      } finally {
+        webampRef.current = null;
+        if (container) container.innerHTML = "";
+      }
     };
   }, []);
+
+  // Attach handlers (safe to run when props change)
   useEffect(() => {
-    if (webamp.current) {
-      webamp.current.onClose(onClose);
-      webamp.current.onMinimize(onMinimize);
-    }
-  });
+    const wa = webampRef.current;
+    if (!wa) return;
+    if (onClose) wa.onClose(onClose);
+    if (onMinimize) wa.onMinimize(onMinimize);
+  }, [onClose, onMinimize]);
+
   return (
     <div
-      style={{ position: 'fixed', left: 0, top: 0, right: 0, bottom: 0 }}
-      ref={ref}
+      ref={containerRef}
+      style={{ position: "fixed", inset: 0 }}
     />
   );
 }
-
-export default Winamp;
