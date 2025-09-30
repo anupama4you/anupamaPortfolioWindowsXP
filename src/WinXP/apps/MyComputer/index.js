@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { WindowDropDowns } from 'components';
@@ -26,7 +26,16 @@ import logo from 'assets/github-logo.png';
 import mine from 'assets/minesweeper/mine-icon.png';
 import windows from 'assets/windowsIcons/windows.png';
 
+// Import your projects JSON here
+import projectsJSON from 'data/projects.json';
+
+const projectsData = projectsJSON.projects;
+
 function MyComputer({ onClose }) {
+  const [currentPath, setCurrentPath] = useState(['My Computer']);
+  const [history, setHistory] = useState([['My Computer']]);
+  const [historyIndex, setHistoryIndex] = useState(0);
+
   function onClickOptionItem(item) {
     switch (item) {
       case 'Close':
@@ -35,6 +44,52 @@ function MyComputer({ onClose }) {
       default:
     }
   }
+
+  const navigateToFolder = (folderName) => {
+    const newPath = [...currentPath, folderName];
+    setCurrentPath(newPath);
+    const newHistory = history.slice(0, historyIndex + 1);
+    newHistory.push(newPath);
+    setHistory(newHistory);
+    setHistoryIndex(newHistory.length - 1);
+  };
+
+  const goBack = () => {
+    if (historyIndex > 0) {
+      setHistoryIndex(historyIndex - 1);
+      setCurrentPath(history[historyIndex - 1]);
+    }
+  };
+
+  const goForward = () => {
+    if (historyIndex < history.length - 1) {
+      setHistoryIndex(historyIndex + 1);
+      setCurrentPath(history[historyIndex + 1]);
+    }
+  };
+
+  const goUp = () => {
+    if (currentPath.length > 1) {
+      const newPath = currentPath.slice(0, -1);
+      setCurrentPath(newPath);
+      const newHistory = history.slice(0, historyIndex + 1);
+      newHistory.push(newPath);
+      setHistory(newHistory);
+      setHistoryIndex(newHistory.length - 1);
+    }
+  };
+
+  const canGoBack = historyIndex > 0;
+  const canGoForward = historyIndex < history.length - 1;
+  const canGoUp = currentPath.length > 1;
+  const currentLocation = currentPath[currentPath.length - 1];
+
+  // Check if we're viewing a specific project (directly from root now)
+  const viewingProject = currentPath.length > 1;
+  const currentProject = viewingProject
+    ? projectsData.find(p => p.name === currentLocation)
+    : null;
+
   return (
     <Div>
       <section className="com__toolbar">
@@ -47,16 +102,25 @@ function MyComputer({ onClose }) {
         <img className="com__windows-logo" src={windows} alt="windows" />
       </section>
       <section className="com__function_bar">
-        <div className="com__function_bar__button--disable">
+        <div 
+          className={`com__function_bar__button${!canGoBack ? '--disable' : ''}`}
+          onClick={canGoBack ? goBack : undefined}
+        >
           <img className="com__function_bar__icon" src={back} alt="" />
           <span className="com__function_bar__text">Back</span>
           <div className="com__function_bar__arrow" />
         </div>
-        <div className="com__function_bar__button--disable">
+        <div 
+          className={`com__function_bar__button${!canGoForward ? '--disable' : ''}`}
+          onClick={canGoForward ? goForward : undefined}
+        >
           <img className="com__function_bar__icon" src={forward} alt="" />
           <div className="com__function_bar__arrow" />
         </div>
-        <div className="com__function_bar__button">
+        <div 
+          className={`com__function_bar__button${!canGoUp ? '--disable' : ''}`}
+          onClick={canGoUp ? goUp : undefined}
+        >
           <img className="com__function_bar__icon--normalize" src={up} alt="" />
         </div>
         <div className="com__function_bar__separate" />
@@ -94,7 +158,9 @@ function MyComputer({ onClose }) {
             alt="ie"
             className="com__address_bar__content__img"
           />
-          <div className="com__address_bar__content__text">My Computer</div>
+          <div className="com__address_bar__content__text">
+            {currentPath.join('/')}
+          </div>
           <img
             src={dropdown}
             alt="dropdown"
@@ -112,7 +178,7 @@ function MyComputer({ onClose }) {
             <div className="com__content__left__card">
               <div className="com__content__left__card__header">
                 <div className="com__content__left__card__header__text">
-                  System Tasks
+                  {viewingProject ? 'Project Actions' : 'System Tasks'}
                 </div>
                 <img
                   src={pullup}
@@ -121,36 +187,60 @@ function MyComputer({ onClose }) {
                 />
               </div>
               <div className="com__content__left__card__content">
-                <div className="com__content__left__card__row">
-                  <img
-                    className="com__content__left__card__img"
-                    src={viewInfo}
-                    alt="view"
-                  />
-                  <div className="com__content__left__card__text link">
-                    View system information
-                  </div>
-                </div>
-                <div className="com__content__left__card__row">
-                  <img
-                    className="com__content__left__card__img"
-                    src={remove}
-                    alt="remove"
-                  />
-                  <div className="com__content__left__card__text link">
-                    Add or remove programs
-                  </div>
-                </div>
-                <div className="com__content__left__card__row">
-                  <img
-                    className="com__content__left__card__img"
-                    src={control}
-                    alt="control"
-                  />
-                  <div className="com__content__left__card__text link">
-                    Change a setting
-                  </div>
-                </div>
+                {viewingProject ? (
+                  <>
+                    {currentProject?.github && (
+                      <div className="com__content__left__card__row">
+                        <img
+                          className="com__content__left__card__img"
+                          src={logo}
+                          alt="github"
+                        />
+                        <a
+                          href={currentProject.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="com__content__left__card__text link"
+                        >
+                          View on GitHub
+                        </a>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <div className="com__content__left__card__row">
+                      <img
+                        className="com__content__left__card__img"
+                        src={viewInfo}
+                        alt="view"
+                      />
+                      <div className="com__content__left__card__text link">
+                        View system information
+                      </div>
+                    </div>
+                    <div className="com__content__left__card__row">
+                      <img
+                        className="com__content__left__card__img"
+                        src={remove}
+                        alt="remove"
+                      />
+                      <div className="com__content__left__card__text link">
+                        Add or remove programs
+                      </div>
+                    </div>
+                    <div className="com__content__left__card__row">
+                      <img
+                        className="com__content__left__card__img"
+                        src={control}
+                        alt="control"
+                      />
+                      <div className="com__content__left__card__text link">
+                        Change a setting
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             <div className="com__content__left__card">
@@ -219,155 +309,270 @@ function MyComputer({ onClose }) {
                 />
               </div>
               <div className="com__content__left__card__content">
-                <div className="com__content__left__card__row">
-                  <iframe
-                    title="ghbtn"
-                    style={{ margin: '0 0 3px -1px', height: '30px' }}
-                    src="https://ghbtns.com/github-btn.html?user=anupama4you&repo=winXP&type=star&count=true&size=large"
-                    frameBorder="0"
-                    scrolling="0"
-                    width="170px"
-                    height="20px"
-                  />
-                </div>
-                <div className="com__content__left__card__row">
-                  <img
-                    className="com__content__left__card__img"
-                    src=""
-                    alt="control"
-                  />
-                  <a
-                    href="https://medium.com/@anupama4you"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="com__content__left__card__text link"
-                  >
-                    Medium
-                  </a>
-                </div>
-                <div className="com__content__left__card__row">
-                  <img
-                    className="com__content__left__card__img"
-                    src={mine}
-                    alt="control"
-                  />
-                  <a
-                    href="https://github.com/anupama4you/minesweeper"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="com__content__left__card__text link"
-                  >
-                    Minesweeper
-                  </a>
-                </div>
+                {viewingProject && currentProject ? (
+                  <>
+                    <div className="com__content__left__card__row">
+                      <div className="com__content__left__card__text black bold">
+                        {currentProject.name}
+                      </div>
+                    </div>
+                    <div className="com__content__left__card__row">
+                      <div className="com__content__left__card__text black">
+                        Technologies:
+                      </div>
+                    </div>
+                    {currentProject.technologies?.map((tech, i) => (
+                      <div key={i} className="com__content__left__card__row">
+                        <div className="com__content__left__card__text">
+                          • {tech}
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <div className="com__content__left__card__row">
+                      <iframe
+                        title="ghbtn"
+                        style={{ margin: '0 0 3px -1px', height: '30px' }}
+                        src="https://ghbtns.com/github-btn.html?user=anupama4you&repo=winXP&type=star&count=true&size=large"
+                        frameBorder="0"
+                        scrolling="0"
+                        width="170px"
+                        height="20px"
+                      />
+                    </div>
+                    <div className="com__content__left__card__row">
+                      <img
+                        className="com__content__left__card__img"
+                        src=""
+                        alt="control"
+                      />
+                      <a
+                        href="https://medium.com/@anupama4you"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="com__content__left__card__text link"
+                      >
+                        Medium
+                      </a>
+                    </div>
+                    <div className="com__content__left__card__row">
+                      <img
+                        className="com__content__left__card__img"
+                        src={mine}
+                        alt="control"
+                      />
+                      <a
+                        href="https://github.com/anupama4you/minesweeper"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="com__content__left__card__text link"
+                      >
+                        Minesweeper
+                      </a>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
           <div className="com__content__right">
-            <div className="com__content__right__card">
-              <div className="com__content__right__card__header">
-                Files Stored on This Computer
-              </div>
-              <div className="com__content__right__card__content">
-                <div className="com__content__right__card__item">
-                  <img
-                    src={folder}
-                    alt="folder"
-                    className="com__content__right__card__img"
-                  />
-                  <div className="com__content__right__card__img-container">
-                    <div className="com__content__right__card__text">
-                      Shared Documents
+            {viewingProject && currentProject ? (
+              <>
+                <div className="com__content__right__card">
+                  <div className="com__content__right__card__header">
+                    Project Details
+                  </div>
+                  <div className="com__content__right__card__content" style={{ display: 'block', padding: '20px' }}>
+                    <h3 style={{ marginBottom: '10px', fontSize: '14px' }}>{currentProject.name}</h3>
+                    <p style={{ marginBottom: '5px', lineHeight: '1.5', fontStyle: 'italic', color: '#666' }}>
+                      {currentProject.tagline}
+                    </p>
+                    <p style={{ marginBottom: '15px', lineHeight: '1.5' }}>
+                      {currentProject.fullDescription}
+                    </p>
+                    <div style={{ marginBottom: '10px' }}>
+                      <strong>Technologies:</strong>
+                    </div>
+                    <div style={{ marginBottom: '15px' }}>
+                      {currentProject.technologies?.map((tech, i) => (
+                        <span
+                          key={i}
+                          style={{
+                            display: 'inline-block',
+                            padding: '4px 8px',
+                            marginRight: '5px',
+                            marginBottom: '5px',
+                            background: '#e0e0e0',
+                            borderRadius: '3px',
+                            fontSize: '10px'
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    {currentProject.highlights && (
+                      <>
+                        <div style={{ marginBottom: '10px' }}>
+                          <strong>Highlights:</strong>
+                        </div>
+                        <ul style={{ marginBottom: '15px', paddingLeft: '20px', fontSize: '11px' }}>
+                          {currentProject.highlights.map((highlight, i) => (
+                            <li key={i} style={{ marginBottom: '5px' }}>{highlight}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                    <div style={{ marginTop: '15px', display: 'flex', gap: '10px' }}>
+                      {currentProject.github && (
+                        <a
+                          href={currentProject.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            display: 'inline-block',
+                            padding: '8px 16px',
+                            background: '#0078d7',
+                            color: 'white',
+                            textDecoration: 'none',
+                            borderRadius: '3px',
+                            fontSize: '11px'
+                          }}
+                        >
+                          View on GitHub
+                        </a>
+                      )}
+                      {currentProject.demo && (
+                        <a
+                          href={currentProject.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            display: 'inline-block',
+                            padding: '8px 16px',
+                            background: '#28a745',
+                            color: 'white',
+                            textDecoration: 'none',
+                            borderRadius: '3px',
+                            fontSize: '11px'
+                          }}
+                        >
+                          View Demo
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
-                <div className="com__content__right__card__item">
-                  <img
-                    src={folder}
-                    alt="folder"
-                    className="com__content__right__card__img"
-                  />
-                  <div className="com__content__right__card__img-container">
-                    <div className="com__content__right__card__text">
-                      User's Documents
+
+                {currentProject.youtubeId && (
+                  <div className="com__content__right__card">
+                    <div className="com__content__right__card__header">
+                      Video Demo
+                    </div>
+                    <div className="com__content__right__card__content" style={{ display: 'block', padding: '20px' }}>
+                      <iframe
+                        width="100%"
+                        height="315"
+                        src={`https://www.youtube.com/embed/${currentProject.youtubeId}`}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        style={{ maxWidth: '560px' }}
+                      />
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="com__content__right__card">
-              <div className="com__content__right__card__header">
-                Hard Disk Drives
-              </div>
-              <div className="com__content__right__card__content">
-                <div className="com__content__right__card__item">
-                  <img
-                    src={disk}
-                    alt="disk"
-                    className="com__content__right__card__img"
-                  />
-                  <div className="com__content__right__card__img-container">
-                    <div className="com__content__right__card__text">
-                      Local Disk (C:)
+                )}
+
+                {currentProject.images && currentProject.images.length > 0 && (
+                  <div className="com__content__right__card">
+                    <div className="com__content__right__card__header">
+                      Screenshots
+                    </div>
+                    <div className="com__content__right__card__content" style={{ display: 'block', padding: '20px' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px' }}>
+                        {currentProject.images.map((image, i) => (
+                          <div key={i} style={{ border: '1px solid #ddd', padding: '5px', background: '#fff' }}>
+                            <img
+                              src={image}
+                              alt={`${currentProject.name} screenshot ${i + 1}`}
+                              style={{ width: '100%', height: 'auto', display: 'block' }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <img src='assets/windowsIcons/forward.png' alt='test'  />
                     </div>
                   </div>
+                )}
+              </>
+            ) : (
+              <>
+                <div className="com__content__right__card">
+                  <div className="com__content__right__card__header">
+                    My Projects
+                  </div>
+                  <div className="com__content__right__card__content">
+                    {projectsData.map(project => (
+                      <div
+                        key={project.id}
+                        className="com__content__right__card__item"
+                        onDoubleClick={() => navigateToFolder(project.name)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <img
+                          src={folder}
+                          alt="folder"
+                          className="com__content__right__card__img"
+                        />
+                        <div className="com__content__right__card__img-container">
+                          <div className="com__content__right__card__text">
+                            {project.name}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="com__content__right__card">
-              <div className="com__content__right__card__header">
-                Devices with Removable Storage
-              </div>
-              <div className="com__content__right__card__content">
-                <div className="com__content__right__card__item">
-                  <div className="com__content__right__card__img-container">
-                    <img
-                      src={cd}
-                      alt="cd"
-                      className="com__content__right__card__img"
-                    />
+                <div className="com__content__right__card com__content__right__card--me">
+                  <div className="com__content__right__card__header">
+                    About Me :)
                   </div>
-                  <div className="com__content__right__card__text">
-                    CD Drive (D:)
+                  <div className="com__content__right__card__content">
+                    <a
+                      href="https://github.com/anupama4you"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="com__content__right__card__item--me"
+                    >
+                      <img
+                        className="com__content__right__card__img"
+                        src={logo}
+                        alt="control"
+                      />
+                      <div className="com__content__right__card__text">Github</div>
+                    </a>
+                    <a
+                      href="https://sh1zuku.csie.io"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="com__content__right__card__item--me"
+                    >
+                      <img
+                        className="com__content__right__card__img"
+                        src="https://a.ppy.sh/2926513_1448497605.png"
+                        alt="control"
+                      />
+                      <div className="com__content__right__card__text">
+                        My Website
+                      </div>
+                    </a>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="com__content__right__card com__content__right__card--me">
-              <div className="com__content__right__card__header">
-                About Me :)
-              </div>
-              <div className="com__content__right__card__content">
-                <a
-                  href="https://github.com/anupama4you"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="com__content__right__card__item--me"
-                >
-                  <img
-                    className="com__content__right__card__img"
-                    src={logo}
-                    alt="control"
-                  />
-                  <div className="com__content__right__card__text">Github</div>
-                </a>
-                <a
-                  href="https://sh1zuku.csie.io"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="com__content__right__card__item--me"
-                >
-                  <img
-                    className="com__content__right__card__img"
-                    src="https://a.ppy.sh/2926513_1448497605.png"
-                    alt="control"
-                  />
-                  <div className="com__content__right__card__text">
-                    My Website
-                  </div>
-                </a>
-              </div>
-            </div>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -420,6 +625,7 @@ const Div = styled.div`
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 3px;
+    cursor: pointer;
     &:hover {
       border: 1px solid rgba(0, 0, 0, 0.1);
       box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.1);
@@ -441,6 +647,7 @@ const Div = styled.div`
     height: 100%;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0);
+    cursor: default;
   }
   .com__function_bar__text {
     margin-right: 4px;
@@ -538,6 +745,8 @@ const Div = styled.div`
       white-space: nowrap;
       left: 16px;
       right: 17px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 

@@ -1,0 +1,293 @@
+{
+  "projects": [
+    {
+      "id": "wecare",
+      "name": "WeCare",
+      "tagline": "Edge AI fall detection and elderly monitoring system",
+      "description": "An integrated solution designed to monitor and safeguard elderly individuals with cognitive impairments by detecting falls and wandering behavior using edge AI.",
+      "icon": "676",
+      "images": [
+        "assets/projects/wecare/1.png",
+        "assets/projects/wecare/2.png",
+        "assets/projects/wecare/3.png",
+        "assets/projects/wecare/4.png"
+      ],
+      "youtubeId": "dQw4w9WgXcQ",
+      "technologies": [
+        "Flutter",
+        "Python",
+        "PyTorch",
+        "Raspberry Pi",
+        "Edge Computing"
+      ],
+      "category": "Mobile & IoT",
+      "year": "2023",
+      "github": "https://github.com/yourusername/wecare",
+      "demo": null,
+      "highlights": [
+        "Real-time fall detection using wearable sensors",
+        "Privacy-first edge processing on Raspberry Pi 4",
+        "Instant caregiver notifications with location context",
+        "Accessible UI for elderly users and caregivers"
+      ],
+      "fullDescription": "WeCare is an integrated solution designed to monitor and safeguard elderly individuals with cognitive impairments by detecting falls and wandering behavior using edge AI. The system architecture includes a Flutter-based mobile application, an edge computing device (e.g., Raspberry Pi 4), and wearable sensors like accelerometers and GPS. The Python-based backend uses PyTorch to run ML models for on-device activity classification, ensuring privacy and low latency. Key considerations included user privacy, reliable detection in real-world scenarios, caregiver accessibility, and cost-effective edge deployment."
+    },
+    {
+      "id": "cropsense",
+      "name": "CropSense",
+      "tagline": "AIGC-assisted leaf disease detection for farmers",
+      "description": "An AI-powered tool for leaf disease detection to support farmers and home growers with actionable treatment recommendations.",
+      "icon": "680",
+      "images": [
+        "/assets/projects/cropsense/screenshot1.png",
+        "/assets/projects/cropsense/screenshot2.png",
+        "/assets/projects/cropsense/screenshot3.png",
+        "/assets/projects/cropsense/screenshot4.png",
+        "/assets/projects/cropsense/screenshot5.png"
+      ],
+      "youtubeId": null,
+      "technologies": [
+        "React",
+        "Node.js",
+        "Flask",
+        "Python",
+        "MongoDB",
+        "Deep Learning"
+      ],
+      "category": "Web & AI",
+      "year": "2023",
+      "github": "https://github.com/yourusername/cropsense",
+      "demo": "https://cropsense.demo.com",
+      "highlights": [
+        "Image-based disease detection with confidence scores",
+        "Treatment suggestions and agricultural references",
+        "Offline caching for poor connectivity",
+        "API layer for future integrations"
+      ],
+      "fullDescription": "CropSense represents the integration of artificial intelligence with accessible web and mobile technologies to empower farmers and home growers in identifying plant health issues at scale. By combining a deep learning model for image-based disease detection with a user-friendly interface, the system lowers the barrier to modern agricultural decision-making. Results are presented with confidence scores, annotated explanations, and links to trusted agricultural sources."
+    },
+    {
+      "id": "findlove",
+      "name": "findLove",
+      "tagline": "Privacy-first dating application",
+      "description": "A secure dating platform built with privacy-by-design principles, enabling meaningful connections during the COVID-19 pandemic.",
+      "icon": "327",
+      "images": [
+        "/assets/projects/findlove/screenshot1.png",
+        "/assets/projects/findlove/screenshot2.png",
+        "/assets/projects/findlove/screenshot3.png",
+        "/assets/projects/findlove/screenshot4.png"
+      ],
+      "youtubeId": null,
+      "technologies": [
+        "React",
+        "Node.js",
+        "MySQL",
+        "WebSockets",
+        "JWT",
+        "Material UI"
+      ],
+      "category": "Web & Social",
+      "year": "2021",
+      "github": "https://github.com/yourusername/findlove",
+      "demo": null,
+      "highlights": [
+        "JWT authentication with password hashing",
+        "Real-time chat and notifications via WebSockets",
+        "Compatibility algorithm based on interests and location",
+        "Security hardened against XSS, SQL injection, and CSRF"
+      ],
+      "fullDescription": "findLove is a privacy-by-design dating application built with React, Node.js, and MySQL to help individuals form friendships and locate compatible partners. The system emphasizes secure handling of personal data, accessibility across devices, and reliable matchmaking. Features include preference-based discovery, popularity scoring, location-based filtering using Google Maps APIs, and a COVID-19 self-assessment module for added social relevance."
+    },
+    {
+      "id": "devest",
+      "name": "Devest Marketing",
+      "tagline": "Bilingual company website with Laravel",
+      "description": "A fully dynamic, bilingual company site built for Devest Marketing in Egypt during a short-term internship.",
+      "icon": "308",
+      "images": [
+        "/assets/projects/devest/screenshot1.png",
+        "/assets/projects/devest/screenshot2.png",
+        "/assets/projects/devest/screenshot3.png",
+        "/assets/projects/devest/screenshot4.png"
+      ],
+      "youtubeId": null,
+      "technologies": [
+        "Laravel",
+        "PHP",
+        "MySQL",
+        "HTML/CSS",
+        "JavaScript"
+      ],
+      "category": "Web",
+      "year": "2020",
+      "github": null,
+      "demo": "https://devestmarketing.com",
+      "highlights": [
+        "Full bilingual support (English & Arabic)",
+        "Right-to-left (RTL) text architecture",
+        "Admin dashboard for content management",
+        "Mobile-responsive design"
+      ],
+      "fullDescription": "The Devest official website was developed as part of a short-term internship experience in Egypt. It is a fully dynamic, bilingual company site built using Laravel's MVC architecture. The completed website includes a dynamic front-end, blog system, admin dashboard, portfolio showcase, and full mobile responsiveness. Developing for Arabic and RTL text architecture presented unique challenges that enriched the project experience."
+    },
+    {
+      "id": "devent",
+      "name": "DEVENT",
+      "tagline": "Event management and listing platform",
+      "description": "A streamlined event management website for listing, categorizing, and promoting events with intuitive discoverability.",
+      "icon": "680",
+      "images": [
+        "/assets/projects/devent/screenshot1.png",
+        "/assets/projects/devent/screenshot2.png",
+        "/assets/projects/devent/screenshot3.png",
+        "/assets/projects/devent/screenshot4.png"
+      ],
+      "youtubeId": null,
+      "technologies": [
+        "PHP",
+        "JavaScript",
+        "CSS",
+        "SQL"
+      ],
+      "category": "Web",
+      "year": "2020",
+      "github": "https://github.com/yourusername/devent",
+      "demo": null,
+      "highlights": [
+        "Search, filters, and calendar views",
+        "Clear event pages with CTAs",
+        "Basic SEO for public events",
+        "Lightweight static hosting support"
+      ],
+      "fullDescription": "DEVENT was built as a streamlined platform to simplify the way events are created, managed, and discovered. By leveraging a classic web stack, the platform ensures compatibility, fast performance, and ease of maintenance. The user experience is centered around discoverability with intuitive search tools, filters, and calendar views. The design philosophy prioritized clarity, speed, and practical use cases for small to mid-scale event promotion needs."
+    },
+    {
+      "id": "medixo",
+      "name": "MEDIXO",
+      "tagline": "Handwritten prescription reader",
+      "description": "A mobile app concept that reads handwritten prescriptions and connects users with nearby pharmacies using OCR.",
+      "icon": "327",
+      "images": [
+        "/assets/projects/medixo/screenshot1.png",
+        "/assets/projects/medixo/screenshot2.png",
+        "/assets/projects/medixo/screenshot3.png",
+        "/assets/projects/medixo/screenshot4.png",
+        "/assets/projects/medixo/screenshot5.png"
+      ],
+      "youtubeId": null,
+      "technologies": [
+        "Python",
+        "Kotlin",
+        "Firebase",
+        "Google Vision API",
+        "OCR"
+      ],
+      "category": "Mobile & AI",
+      "year": "2022",
+      "github": "https://github.com/yourusername/medixo",
+      "demo": null,
+      "highlights": [
+        "OCR-powered prescription text extraction",
+        "Drug reference list matching",
+        "Geolocation for nearby pharmacies",
+        "Privacy-focused data handling"
+      ],
+      "fullDescription": "MEDIXO was envisioned as a practical healthcare assistant to simplify the process of handling handwritten prescriptions. By leveraging optical character recognition (OCR) through the Google Vision API, the app ensures accurate extraction of drug names, even from challenging handwriting. Built with Python/Kotlin and Firebase for scalability, MEDIXO prioritizes clarity, accuracy, and reliability for a streamlined mobile-first healthcare experience."
+    },
+    {
+      "id": "endlessrunner",
+      "name": "Endless Runner",
+      "tagline": "Unity procedural game prototype",
+      "description": "A Unity prototype exploring procedural level generation and difficulty scaling in a fast-paced game environment.",
+      "icon": "680",
+      "images": [
+        "/assets/projects/endlessrunner/screenshot1.png",
+        "/assets/projects/endlessrunner/screenshot2.png",
+        "/assets/projects/endlessrunner/screenshot3.png",
+        "/assets/projects/endlessrunner/screenshot4.png"
+      ],
+      "youtubeId": null,
+      "technologies": [
+        "Unity",
+        "C#",
+        "Game Development"
+      ],
+      "category": "Game Development",
+      "year": "2021",
+      "github": "https://github.com/yourusername/endlessrunner",
+      "demo": null,
+      "highlights": [
+        "Dynamic obstacle spawning",
+        "Procedural level generation",
+        "Difficulty scaling system",
+        "Modular code structure for reuse"
+      ],
+      "fullDescription": "Endless Runner demonstrates how procedural content generation and scaling difficulty can be applied in Unity to create engaging replayable experiences. By dynamically spawning obstacles and hazards, the game adapts to player performance while maintaining a consistent challenge curve. The project was structured with modularity in mind, isolating systems for potential reuse in future prototypes."
+    },
+    {
+      "id": "dnd",
+      "name": "D & D Builder",
+      "tagline": "Character builder for role-playing games",
+      "description": "A companion app for assembling and managing character builds by consuming an external RPG API.",
+      "icon": "308",
+      "images": [
+        "/assets/projects/dnd/screenshot1.png",
+        "/assets/projects/dnd/screenshot2.png",
+        "/assets/projects/dnd/screenshot3.png",
+        "/assets/projects/dnd/screenshot4.png"
+      ],
+      "youtubeId": null,
+      "technologies": [
+        "ASP.NET",
+        "C#",
+        "SQLite",
+        "JavaScript",
+        "CSS"
+      ],
+      "category": "Desktop & Web",
+      "year": "2022",
+      "github": "https://github.com/yourusername/dnd-builder",
+      "demo": null,
+      "highlights": [
+        "External RPG API integration",
+        "Local SQLite persistence",
+        "Keyboard-friendly UI",
+        "Graceful handling of versioned API data"
+      ],
+      "fullDescription": "D & D Builder represents a practical blend of web technologies and lightweight desktop usability for tabletop role-playing enthusiasts. By leveraging a third-party game data API, the tool enables players to quickly generate, customize, and refine character builds. The architecture integrates a C#/ASP.NET backend with a local SQLite database, ensuring players can persist their creations across sessions while keeping storage minimal."
+    },
+    {
+      "id": "zeil",
+      "name": "ZEIL",
+      "tagline": "Premium Shopify theme for e-commerce",
+      "description": "A colorful, conversion-optimized Shopify theme designed for modern lifestyle and fashion brands.",
+      "icon": "676",
+      "images": [
+        "/assets/projects/zeil/screenshot1.png",
+        "/assets/projects/zeil/screenshot2.png",
+        "/assets/projects/zeil/screenshot3.png",
+        "/assets/projects/zeil/screenshot4.png"
+      ],
+      "youtubeId": null,
+      "technologies": [
+        "Shopify",
+        "Liquid",
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "category": "E-commerce",
+      "year": "2023",
+      "github": null,
+      "demo": "https://zeil-theme.myshopify.com",
+      "highlights": [
+        "High-converting product page layouts",
+        "Built-in upsells and bundling features",
+        "Mobile-first responsive design",
+        "Seamless review app integration"
+      ],
+      "fullDescription": "ZEIL reimagines the balance between aesthetics and conversion-driven design in online retail. Built for brands that want both personality and performance, ZEIL provides merchants with vibrant layouts and proven sales features out-of-the-box. Its product pages are structured for clarity and impact, showcasing benefits alongside trust badges, urgency triggers, and sticky calls-to-action."
+    }
+  ]
+}

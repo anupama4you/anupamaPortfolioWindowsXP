@@ -36,17 +36,25 @@ function Footer({
   const [time, setTime] = useState(getTime);
   const [menuOn, setMenuOn] = useState(false);
   const menu = useRef(null);
-  function toggleMenu() {
+  
+  function toggleMenu(e) {
+    // Stop event propagation to prevent _onMouseDown from firing
+    e.stopPropagation();
     setMenuOn(on => !on);
   }
+  
   function _onMouseDown(e) {
     if (e.target.closest('.footer__window')) return;
+    // Don't trigger onMouseDown if clicking on start button or menu
+    if (e.target.closest('.footer__start') || e.target.closest('.footer__start__menu')) return;
     onMouseDown();
   }
+  
   function _onClickMenuItem(name) {
     onClickMenuItem(name);
     setMenuOn(false);
   }
+  
   useEffect(() => {
     const timer = setInterval(() => {
       const newTime = getTime();
@@ -54,11 +62,17 @@ function Footer({
     }, 1000);
     return () => clearInterval(timer);
   }, [time]);
+  
   useEffect(() => {
     const target = menu.current;
     if (!target) return;
     function onMouseDown(e) {
-      if (!target.contains(e.target) && menuOn) setMenuOn(false);
+      // Close menu if clicking outside of both the menu and start button
+      if (!target.contains(e.target) && 
+          !e.target.closest('.footer__start') && 
+          menuOn) {
+        setMenuOn(false);
+      }
     }
     window.addEventListener('mousedown', onMouseDown);
     return () => window.removeEventListener('mousedown', onMouseDown);
