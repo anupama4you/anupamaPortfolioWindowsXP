@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { WindowDropDowns } from 'components';
+import { WindowDropDowns, ImageGallery } from 'components';
 import dropDownData from './dropDownData';
 import go from 'assets/windowsIcons/290.png';
 import search from 'assets/windowsIcons/299(32x32).png';
@@ -102,23 +102,27 @@ function MyComputer({ onClose }) {
         <img className="com__windows-logo" src={windows} alt="windows" />
       </section>
       <section className="com__function_bar">
-        <div 
-          className={`com__function_bar__button${!canGoBack ? '--disable' : ''}`}
+        <div
+          className={`com__function_bar__button${
+            !canGoBack ? "--disable" : ""
+          }`}
           onClick={canGoBack ? goBack : undefined}
         >
           <img className="com__function_bar__icon" src={back} alt="" />
           <span className="com__function_bar__text">Back</span>
           <div className="com__function_bar__arrow" />
         </div>
-        <div 
-          className={`com__function_bar__button${!canGoForward ? '--disable' : ''}`}
+        <div
+          className={`com__function_bar__button${
+            !canGoForward ? "--disable" : ""
+          }`}
           onClick={canGoForward ? goForward : undefined}
         >
           <img className="com__function_bar__icon" src={forward} alt="" />
           <div className="com__function_bar__arrow" />
         </div>
-        <div 
-          className={`com__function_bar__button${!canGoUp ? '--disable' : ''}`}
+        <div
+          className={`com__function_bar__button${!canGoUp ? "--disable" : ""}`}
           onClick={canGoUp ? goUp : undefined}
         >
           <img className="com__function_bar__icon--normalize" src={up} alt="" />
@@ -159,7 +163,7 @@ function MyComputer({ onClose }) {
             className="com__address_bar__content__img"
           />
           <div className="com__address_bar__content__text">
-            {currentPath.join('/')}
+            {currentPath.join("/")}
           </div>
           <img
             src={dropdown}
@@ -178,7 +182,7 @@ function MyComputer({ onClose }) {
             <div className="com__content__left__card">
               <div className="com__content__left__card__header">
                 <div className="com__content__left__card__header__text">
-                  {viewingProject ? 'Project Actions' : 'System Tasks'}
+                  {viewingProject ? "Project Actions" : "System Tasks"}
                 </div>
                 <img
                   src={pullup}
@@ -334,7 +338,7 @@ function MyComputer({ onClose }) {
                     <div className="com__content__left__card__row">
                       <iframe
                         title="ghbtn"
-                        style={{ margin: '0 0 3px -1px', height: '30px' }}
+                        style={{ margin: "0 0 3px -1px", height: "30px" }}
                         src="https://ghbtns.com/github-btn.html?user=anupama4you&repo=winXP&type=star&count=true&size=large"
                         frameBorder="0"
                         scrolling="0"
@@ -384,29 +388,41 @@ function MyComputer({ onClose }) {
                   <div className="com__content__right__card__header">
                     Project Details
                   </div>
-                  <div className="com__content__right__card__content" style={{ display: 'block', padding: '20px' }}>
-                    <h3 style={{ marginBottom: '10px', fontSize: '14px' }}>{currentProject.name}</h3>
-                    <p style={{ marginBottom: '5px', lineHeight: '1.5', fontStyle: 'italic', color: '#666' }}>
+                  <div
+                    className="com__content__right__card__content"
+                    style={{ display: "block", padding: "20px" }}
+                  >
+                    <h3 style={{ marginBottom: "10px", fontSize: "14px" }}>
+                      {currentProject.name}
+                    </h3>
+                    <p
+                      style={{
+                        marginBottom: "5px",
+                        lineHeight: "1.5",
+                        fontStyle: "italic",
+                        color: "#666",
+                      }}
+                    >
                       {currentProject.tagline}
                     </p>
-                    <p style={{ marginBottom: '15px', lineHeight: '1.5' }}>
+                    <p style={{ marginBottom: "15px", lineHeight: "1.5" }}>
                       {currentProject.fullDescription}
                     </p>
-                    <div style={{ marginBottom: '10px' }}>
+                    <div style={{ marginBottom: "10px" }}>
                       <strong>Technologies:</strong>
                     </div>
-                    <div style={{ marginBottom: '15px' }}>
+                    <div style={{ marginBottom: "15px" }}>
                       {currentProject.technologies?.map((tech, i) => (
                         <span
                           key={i}
                           style={{
-                            display: 'inline-block',
-                            padding: '4px 8px',
-                            marginRight: '5px',
-                            marginBottom: '5px',
-                            background: '#e0e0e0',
-                            borderRadius: '3px',
-                            fontSize: '10px'
+                            display: "inline-block",
+                            padding: "4px 8px",
+                            marginRight: "5px",
+                            marginBottom: "5px",
+                            background: "#e0e0e0",
+                            borderRadius: "3px",
+                            fontSize: "10px",
                           }}
                         >
                           {tech}
@@ -415,30 +431,44 @@ function MyComputer({ onClose }) {
                     </div>
                     {currentProject.highlights && (
                       <>
-                        <div style={{ marginBottom: '10px' }}>
+                        <div style={{ marginBottom: "10px" }}>
                           <strong>Highlights:</strong>
                         </div>
-                        <ul style={{ marginBottom: '15px', paddingLeft: '20px', fontSize: '11px' }}>
+                        <ul
+                          style={{
+                            marginBottom: "15px",
+                            paddingLeft: "20px",
+                            fontSize: "11px",
+                          }}
+                        >
                           {currentProject.highlights.map((highlight, i) => (
-                            <li key={i} style={{ marginBottom: '5px' }}>{highlight}</li>
+                            <li key={i} style={{ marginBottom: "5px" }}>
+                              {highlight}
+                            </li>
                           ))}
                         </ul>
                       </>
                     )}
-                    <div style={{ marginTop: '15px', display: 'flex', gap: '10px' }}>
+                    <div
+                      style={{
+                        marginTop: "15px",
+                        display: "flex",
+                        gap: "10px",
+                      }}
+                    >
                       {currentProject.github && (
                         <a
                           href={currentProject.github}
                           target="_blank"
                           rel="noreferrer"
                           style={{
-                            display: 'inline-block',
-                            padding: '8px 16px',
-                            background: '#0078d7',
-                            color: 'white',
-                            textDecoration: 'none',
-                            borderRadius: '3px',
-                            fontSize: '11px'
+                            display: "inline-block",
+                            padding: "8px 16px",
+                            background: "#0078d7",
+                            color: "white",
+                            textDecoration: "none",
+                            borderRadius: "3px",
+                            fontSize: "11px",
                           }}
                         >
                           View on GitHub
@@ -450,13 +480,13 @@ function MyComputer({ onClose }) {
                           target="_blank"
                           rel="noreferrer"
                           style={{
-                            display: 'inline-block',
-                            padding: '8px 16px',
-                            background: '#28a745',
-                            color: 'white',
-                            textDecoration: 'none',
-                            borderRadius: '3px',
-                            fontSize: '11px'
+                            display: "inline-block",
+                            padding: "8px 16px",
+                            background: "#28a745",
+                            color: "white",
+                            textDecoration: "none",
+                            borderRadius: "3px",
+                            fontSize: "11px",
                           }}
                         >
                           View Demo
@@ -471,7 +501,10 @@ function MyComputer({ onClose }) {
                     <div className="com__content__right__card__header">
                       Video Demo
                     </div>
-                    <div className="com__content__right__card__content" style={{ display: 'block', padding: '20px' }}>
+                    <div
+                      className="com__content__right__card__content"
+                      style={{ display: "block", padding: "20px" }}
+                    >
                       <iframe
                         width="100%"
                         height="315"
@@ -480,7 +513,7 @@ function MyComputer({ onClose }) {
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
-                        style={{ maxWidth: '560px' }}
+                        style={{ maxWidth: "560px" }}
                       />
                     </div>
                   </div>
@@ -491,19 +524,14 @@ function MyComputer({ onClose }) {
                     <div className="com__content__right__card__header">
                       Screenshots
                     </div>
-                    <div className="com__content__right__card__content" style={{ display: 'block', padding: '20px' }}>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px' }}>
-                        {currentProject.images.map((image, i) => (
-                          <div key={i} style={{ border: '1px solid #ddd', padding: '5px', background: '#fff' }}>
-                            <img
-                              src={image}
-                              alt={`${currentProject.name} screenshot ${i + 1}`}
-                              style={{ width: '100%', height: 'auto', display: 'block' }}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                      <img src='assets/windowsIcons/forward.png' alt='test'  />
+                    <div
+                      className="com__content__right__card__content"
+                      style={{ display: "block", padding: "20px" }}
+                    >
+                      <ImageGallery
+                        images={currentProject.images}
+                        projectName={currentProject.name}
+                      />
                     </div>
                   </div>
                 )}
@@ -515,12 +543,12 @@ function MyComputer({ onClose }) {
                     My Projects
                   </div>
                   <div className="com__content__right__card__content">
-                    {projectsData.map(project => (
+                    {projectsData.map((project) => (
                       <div
                         key={project.id}
                         className="com__content__right__card__item"
                         onDoubleClick={() => navigateToFolder(project.name)}
-                        style={{ cursor: 'pointer' }}
+                        style={{ cursor: "pointer" }}
                       >
                         <img
                           src={folder}
@@ -552,7 +580,9 @@ function MyComputer({ onClose }) {
                         src={logo}
                         alt="control"
                       />
-                      <div className="com__content__right__card__text">Github</div>
+                      <div className="com__content__right__card__text">
+                        Github
+                      </div>
                     </a>
                     <a
                       href="https://sh1zuku.csie.io"

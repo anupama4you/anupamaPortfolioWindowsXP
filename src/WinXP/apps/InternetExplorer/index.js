@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { WindowDropDowns, Google } from 'components';
+import { WindowDropDowns, Google, GoogleSearch } from 'components';
 import dropDownData from './dropDownData';
 import ie from 'assets/windowsIcons/ie-paper.png';
 import printer from 'assets/windowsIcons/17(32x32).png';
@@ -69,7 +69,7 @@ function InternetExplorer({ onClose }) {
         <div
           onClick={goMain}
           className={`ie__function_bar__button${
-            state.route === 'main' ? '--disable' : ''
+            state.route === "main" ? "--disable" : ""
           }`}
         >
           <img className="ie__function_bar__icon" src={back} alt="" />
@@ -138,9 +138,9 @@ function InternetExplorer({ onClose }) {
           <img src={ie} alt="ie" className="ie__address_bar__content__img" />
           <div className="ie__address_bar__content__text">
             {`https://www.google.com.tw${
-              state.route === 'search'
+              state.route === "search"
                 ? `/search?q=${encodeURIComponent(state.query)}`
-                : ''
+                : ""
             }`}
           </div>
           <img
@@ -165,8 +165,7 @@ function InternetExplorer({ onClose }) {
       </section>
       <div className="ie__content">
         <div className="ie__content__inner">
-          <Google
-            route={state.route}
+          <GoogleSearch
             query={state.query}
             onSearch={onSearch}
             goMain={goMain}

@@ -1,0 +1,137 @@
+{
+  "personal": {
+    "name": "ANUPAMA DILSHAN",
+    "location": "Adelaide 5000, Australia",
+    "phone": "+61 04 525 755 23",
+    "email": "anupama.dilshan@icloud.com",
+    "website": "https://anupamadev.netlify.app"
+  },
+  "summary": "Recent University of Adelaide Computer Science Master's graduate with three years of international experience in web application development and cloud technologies. Skilled in full-stack development, cloud infrastructure, and agile methodologies.",
+  "skills": {
+    "Languages": "Java, Python, C, C++, C#, Dart, Kotlin",
+    "Web Technologies": "HTML, CSS, JS, PHP, React, Angular, TypeScript",
+    "Backend Frameworks": "Node.js, Express.js, ASP.NET, Laravel, Flask",
+    "Databases": "MySQL, PostgreSQL, MongoDB, Firebase",
+    "Cloud & DevOps": "AWS, GCP, Azure, CI/CD, GitLab CI, Docker, Kubernetes",
+    "Enterprise Systems": "APPIAN BPMS, Salesforce, IFS ERP"
+  },
+  "experience": [
+    {
+      "title": "SOFTWARE DEVELOPER",
+      "company": "Department of Infrastructure and Transport",
+      "location": "Adelaide, SA, Australia",
+      "period": "Aug 2024 - Present",
+      "responsibilities": [
+        "Developed and maintained transport regulation user management systems (TRUMPS, MySAGOV, EZYReg) using Java, AWS, and Oracle SQL",
+        "Implemented REST APIs and CI/CD pipelines while ensuring data security for critical transport applications",
+        "Collaborated with cross-functional teams to optimize code for transport systems, focusing on performance improvements"
+      ]
+    },
+    {
+      "title": "SOFTWARE ENGINEER",
+      "company": "Savvy Finance",
+      "location": "Norwood, SA, Australia",
+      "period": "May 2022 - Dec 2022",
+      "responsibilities": [
+        "Converted and optimized Apex Salesforce applications to Angular, handling increased load and complex data processing",
+        "Designed RESTful APIs using Angular, JavaScript, jQuery, and Bootstrap for consistent front-end applications",
+        "Developed CI/CD pipelines using AWS DevOps and Docker for consistent deployments"
+      ]
+    },
+    {
+      "title": "SOFTWARE ENGINEER",
+      "company": "IFS Research & Development (Pvt) Ltd",
+      "location": "Sri Lanka",
+      "period": "Jan 2020 - Mar 2023",
+      "responsibilities": [
+        "Applied SE principles in C++, C#, ASP.NET, and PL/SQL for comprehensive application development in IFS ERP",
+        "Implemented best practices for application security and compliance, conducted regular audits",
+        "Utilized monitoring tools including Zabbix for proactive issue resolution"
+      ]
+    },
+    {
+      "title": "FULLSTACK DEVELOPER (INTERNSHIP)",
+      "company": "Devest",
+      "location": "Mansoura, Egypt",
+      "period": "May 2021 - Jul 2021",
+      "responsibilities": [
+        "Transformed Adobe XD UI designs into fully functional and mobile-responsive web applications using PHP and Laravel",
+        "Overcame language barriers and applied country-specific technology principles (Right-to-left text architecture)",
+        "Worked on containerized deployments using Docker"
+      ]
+    },
+    {
+      "title": "FULLSTACK DEVELOPER (INTERNSHIP)",
+      "company": "Nichelabs (Pvt) Ltd",
+      "location": "Sri Lanka",
+      "period": "Jan 2019 - Apr 2019",
+      "responsibilities": [
+        "Designed APIs using Express.js, Node.js, GraphQL for backend interactions",
+        "Improved web applications using React.js, JavaScript, and mobile apps using C#, .NET",
+        "Utilized Kubernetes Operators to manage complex application deployments"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Science: Computer Science",
+      "gpa": "GPA - 5.8/7",
+      "institution": "University of Adelaide",
+      "location": "Adelaide, SA, Australia",
+      "date": "Feb 2024",
+      "highlights": [
+        "Awarded \"Global Citizens Scholarship\" (30% tuition coverage)",
+        "Key courses: Distributed Systems, Mining Big Data, Applied Machine Learning, Applied NLP, Event-Driven Computing, Secure Software Engineering, Research Project"
+      ]
+    },
+    {
+      "degree": "Bachelor of Science: Software Engineering",
+      "institution": "Curtin University Australia",
+      "date": "Jan 2020",
+      "highlights": [
+        "Key courses: Operating Systems, Human Computer Interface, Distributed Computing, Programming Languages, Software Engineering Concepts"
+      ]
+    },
+    {
+      "degree": "Higher National Diploma (HND): Software Engineering",
+      "institution": "Sri Lanka Institute of Information Technology (SLIIT)",
+      "date": "Dec 2018",
+      "highlights": [
+        "Key courses: Object-Oriented Programming, Data Structures & Algorithms, Database Management Systems, Computer Networks"
+      ]
+    }
+  ],
+  "projectsNote": "** For detailed project information, please open \"My Computer\" **\n\nProjects include: WeCare, CropSense, findLove, Devest Website, DEVENT, MEDIXO, Endless Runner, D&D Builder, and more...",
+  "volunteering": [
+    "Local Committee Vice President, AIESEC in University of Sri Jayewardenepura",
+    "Team Leader, Project \"Be Sri Lanka\"",
+    "Marketing Head, International Congress"
+  ],
+  "accomplishments": [
+    "9th country rank, 3rd state rank - GCE Advanced Levels (2016)",
+    "Best Emerging Young Leader (2019) - AIESEC in Sri Lanka",
+    "Best Leadership entity in Outgoing Global Talent (2021) - AIESEC SL",
+    "Excellence in Outgoing Global Talent (2021) - Asia Pacific Region",
+    "Excellence performance in Engineering Technology (2016)"
+  ],
+  "references": [
+    {
+      "name": "Michael Baum",
+      "title": "Team Leader",
+      "organization": "Department of Infrastructure and Transport",
+      "email": "michael.baum@sa.gov.au"
+    },
+    {
+      "name": "Dr. Yongliang Qiao",
+      "title": "Research Fellow",
+      "organization": "Australian Institute for Machine Learning, University of Adelaide",
+      "email": "yongliang.qiao@adelaide.edu.au"
+    },
+    {
+      "name": "Bill Tsouvalas",
+      "title": "Managing Director",
+      "organization": "Savvy Finance, Adelaide, Australia",
+      "email": "billt@savvy.com.au"
+    }
+  ]
+}
