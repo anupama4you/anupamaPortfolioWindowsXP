@@ -166,6 +166,7 @@ function InternetExplorer({ onClose }) {
       <div className="ie__content">
         <div className="ie__content__inner">
           <GoogleSearch
+            route={state.route}
             query={state.query}
             onSearch={onSearch}
             goMain={goMain}

@@ -16,6 +16,8 @@ import notepadLarge from 'assets/windowsIcons/327(32x32).png';
 import winamp from 'assets/windowsIcons/winamp.png';
 import paintLarge from 'assets/windowsIcons/680(32x32).png';
 import paint from 'assets/windowsIcons/680(16x16).png';
+import CMD from './cmd';
+import outlookExpress from './outlookExpress';
 
 const gen = () => {
   let id = -1;
@@ -151,6 +153,20 @@ export const defaultIconState = [
     icon: paintLarge,
     title: 'Paint',
     component: Paint,
+    isFocus: false,
+  },
+  {
+    id: 6,
+    icon: paintLarge,
+    title: 'Cmd',
+    component: CMD,
+    isFocus: false,
+  },
+   {
+    id: 7,
+    icon: paintLarge,
+    title: 'OutLook Express',
+    component: outlookExpress,
     isFocus: false,
   },
 ];
@@ -292,6 +308,44 @@ export const appSettings = {
     maximized: window.innerWidth < 800,
     multiInstance: true,
   },
+  Cmd: {
+    header: {
+      icon: paint,
+      title: 'Untitled - Paint',
+    },
+    component: CMD,
+    defaultSize: {
+      width: 660,
+      height: 500,
+    },
+    defaultOffset: {
+      x: 280,
+      y: 70,
+    },
+    resizable: true,
+    minimized: false,
+    maximized: window.innerWidth < 800,
+    multiInstance: true,
+  },
+   outlookExpress: {
+    header: {
+      icon: paint,
+      title: 'Contact me',
+    },
+    component: outlookExpress,
+    defaultSize: {
+      width: 660,
+      height: 500,
+    },
+    defaultOffset: {
+      x: 280,
+      y: 70,
+    },
+    resizable: true,
+    minimized: false,
+    maximized: window.innerWidth < 800,
+    multiInstance: true,
+  },
 };
 
-export { InternetExplorer, Minesweeper, ErrorBox, MyComputer, Notepad, Winamp };
+export { InternetExplorer, Minesweeper, ErrorBox, MyComputer, Notepad, Winamp, CMD, Paint, outlookExpress };

@@ -56,3 +56,114 @@ Webamp
 
 JS Paint
  — Paint reimplementation by 1j01
+
+
+Internet Explorer
+
+You already have this, but enhance it with:
+Favorites/bookmarks linking to your social profiles
+History showing your project sites
+A "homepage" that's your personal landing page
+
+Windows Media Player
+
+Play a showreel video of your projects
+Display project demo videos
+Audio player for a personal introduction podcast/message
+
+Paint
+
+Interactive drawing canvas using HTML5 Canvas
+Could showcase design skills or just be a fun easter egg
+Save/export drawings as images
+
+Calculator
+
+Fully functional calculator using eval() or a proper parser
+Shows attention to detail in replicating classic UI
+
+Command Prompt (CMD)
+
+Terminal-style interface with custom commands
+Commands like help, about, skills, contact, projects
+Could integrate with your project data
+ASCII art responses for fun
+
+Communication/Networking
+Outlook Express / Email Client
+
+Contact form styled as an email composition window
+Inbox showing sample messages/testimonials
+Could actually send emails via a backend service
+
+MSN Messenger
+
+Chatbot using ChatGPT API styled as MSN Messenger
+Display your online status
+Automated responses about your experience/projects
+
+Utilities
+Windows Explorer (File Manager)
+
+You have My Computer, but expand it:
+Documents folder with PDF resume, certificates
+Pictures folder with screenshots, photos
+Downloads folder with downloadable resources
+
+Task Manager
+
+Show fake "running processes" as a creative way to list your tech stack
+Performance tab showing your "skill levels" as graphs
+Could be humorous and creative
+
+Control Panel
+
+Settings for the website (theme, sound effects on/off)
+Display Properties for changing desktop wallpaper
+User Accounts showing your different roles/expertise
+
+Recycle Bin
+
+Humorous collection of "deprecated technologies" you no longer use
+Old project versions
+Fun way to show your evolution as a developer
+
+Entertainment/Creative
+Solitaire / Minesweeper
+
+You already have Minesweeper
+Add Solitaire or other classic games
+Shows you can build game logic
+
+Windows Movie Maker
+
+Timeline view of your career/education journey
+Video player for project demos
+
+Photo Viewer
+
+Gallery of project screenshots
+Team photos, conference attendance
+Certificate images
+
+Documents
+WordPad
+
+Rich text editor displaying your cover letter
+Could have formatted text with bold/italic
+Export to different formats
+
+Adobe Reader / PDF Viewer
+
+Display your resume as a PDF
+View certificates, transcripts
+More professional than Notepad for formal documents
+
+My Recommendations (Priority Order):
+
+Command Prompt - Highly interactive, shows technical personality
+Paint - Fun, unexpected, shows creativity
+Calculator - Simple but demonstrates attention to detail
+Outlook/Contact Form - Essential for portfolio, users need to reach you
+Task Manager - Creative way to visualize your skills
+Recycle Bin - Humorous touch, shows personality

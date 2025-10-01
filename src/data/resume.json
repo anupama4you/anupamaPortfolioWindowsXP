@@ -4,7 +4,12 @@
     "location": "Adelaide 5000, Australia",
     "phone": "+61 04 525 755 23",
     "email": "anupama.dilshan@icloud.com",
-    "website": "https://anupamadev.netlify.app"
+    "website": "https://anupamadev.netlify.app",
+    "social": {
+      "linkedin": "https://www.linkedin.com/in/anupama-dilshan",
+      "github": "https://github.com/anupama4you",
+      "medium": "https://medium.com/@anupama4you"
+    }
   },
   "summary": "Recent University of Adelaide Computer Science Master's graduate with three years of international experience in web application development and cloud technologies. Skilled in full-stack development, cloud infrastructure, and agile methodologies.",
   "skills": {
@@ -133,5 +138,6 @@
       "organization": "Savvy Finance, Adelaide, Australia",
       "email": "billt@savvy.com.au"
     }
+    
   ]
 }
