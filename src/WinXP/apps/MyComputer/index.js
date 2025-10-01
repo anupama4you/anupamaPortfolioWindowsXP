@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 
 import { WindowDropDowns, ImageGallery } from 'components';
@@ -31,9 +31,11 @@ import GitHubButton from 'react-github-btn'
 // Import your projects JSON here
 import projectsJSON from 'data/projects.json';
 import resumeJSON from 'data/resume.json';
+import mySkills from 'data/skills.json';
 
 const projectsData = projectsJSON.projects;
 const socialProfiles = resumeJSON.personal.social;
+const MySkills = mySkills.tech;
 
 function MyComputer({ onClose }) {
   const [currentPath, setCurrentPath] = useState(['My Computer']);
@@ -94,6 +96,12 @@ function MyComputer({ onClose }) {
     ? projectsData.find(p => p.name === currentLocation)
     : null;
 
+  const allTech = Array.isArray(MySkills)
+  ? MySkills
+  : Array.isArray(MySkills?.tech)
+  ? MySkills.tech
+  : [];
+
   return (
     <Div>
       <section className="com__toolbar">
@@ -107,9 +115,8 @@ function MyComputer({ onClose }) {
       </section>
       <section className="com__function_bar">
         <div
-          className={`com__function_bar__button${
-            !canGoBack ? "--disable" : ""
-          }`}
+          className={`com__function_bar__button${!canGoBack ? "--disable" : ""
+            }`}
           onClick={canGoBack ? goBack : undefined}
         >
           <img className="com__function_bar__icon" src={back} alt="" />
@@ -117,9 +124,8 @@ function MyComputer({ onClose }) {
           <div className="com__function_bar__arrow" />
         </div>
         <div
-          className={`com__function_bar__button${
-            !canGoForward ? "--disable" : ""
-          }`}
+          className={`com__function_bar__button${!canGoForward ? "--disable" : ""
+            }`}
           onClick={canGoForward ? goForward : undefined}
         >
           <img className="com__function_bar__icon" src={forward} alt="" />
@@ -338,17 +344,17 @@ function MyComputer({ onClose }) {
                     ))}
                   </>
                 ) : (
-                    <>
-                      <div className="com__content__left__card__row">
-                        <GitHubButton href="https://github.com/anupama4you/anupamaPortfolioWindowsXP" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Star anupama4you/anupamaPortfolioWindowsXP on GitHub">Star</GitHubButton>
-                      </div>
-                      <div className="com__content__left__card__row">
-                        <img
-                          className="com__content__left__card__img"
-                          src={logo}
-                          alt="github"
-                        />
-                        <a
+                  <>
+                    <div className="com__content__left__card__row">
+                      <GitHubButton href="https://github.com/anupama4you/anupamaPortfolioWindowsXP" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Star anupama4you/anupamaPortfolioWindowsXP on GitHub">Star</GitHubButton>
+                    </div>
+                    <div className="com__content__left__card__row">
+                      <img
+                        className="com__content__left__card__img"
+                        src={logo}
+                        alt="github"
+                      />
+                      <a
                         href={socialProfiles.github}
                         target="_blank"
                         rel="noreferrer"
@@ -597,40 +603,18 @@ function MyComputer({ onClose }) {
                   </div>
                 </div>
                 <div className="com__content__right__card com__content__right__card--me">
-                  <div className="com__content__right__card__header">
-                    About Me :)
-                  </div>
-                  <div className="com__content__right__card__content">
-                    <a
-                      href="https://github.com/anupama4you"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="com__content__right__card__item--me"
-                    >
-                      <img
-                        className="com__content__right__card__img"
-                        src={logo}
-                        alt="control"
-                      />
-                      <div className="com__content__right__card__text">
-                        Github
-                      </div>
-                    </a>
-                    <a
-                      href="https://sh1zuku.csie.io"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="com__content__right__card__item--me"
-                    >
-                      <img
-                        className="com__content__right__card__img"
-                        src="https://a.ppy.sh/2926513_1448497605.png"
-                        alt="control"
-                      />
-                      <div className="com__content__right__card__text">
-                        My Website
-                      </div>
-                    </a>
+                  <div className="com__content__right__card">
+                    <div className="com__content__right__card__header">
+                      My Skills:
+                    </div>
+                    <div className="com__content__right__card__content tech-list">
+                      {allTech.map(t => (
+                        <div key={t.name} className="tech-item">
+                          <i className={t.icon} style={{ fontSize: 18 }} />
+                          <span>{t.name}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </>
@@ -989,20 +973,6 @@ const Div = styled.div`
     white-space: nowrap;
     height: 100%;
   }
-  .com__content__right__card--me {
-    .com__content__right__card__header:after,
-    .com__content__right__card__header {
-      transition: 0.4s;
-    }
-    &:hover {
-      .com__content__right__card__header:after {
-        width: 0;
-      }
-      .com__content__right__card__header {
-        transform: scale(1.2) translate(20px, 5px);
-      }
-    }
-  }
   .com__content__right__card__item--me {
     display: flex;
     align-items: center;
@@ -1020,6 +990,24 @@ const Div = styled.div`
       transition-timing-function: cubic-bezier(0.23, 1.93, 0.59, -0.15);
     }
   }
+    .tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  padding-bottom: 10px;
+}
+.tech-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  font-size: 11px;
+  line-height: 1;
+  user-select: none;
+}
+.tech-item:hover { background: #d6d6d6; }
 `;
 
 export default MyComputer;

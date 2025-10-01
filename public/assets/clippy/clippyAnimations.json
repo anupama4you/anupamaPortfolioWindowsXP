@@ -1,0 +1,346 @@
+{
+  "framesize": [124, 93],
+  "animations": {
+    "Thinking": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[124, 93]] },
+        { "duration": 100, "images": [[248, 93]] },
+        { "duration": 100, "images": [[372, 93]] },
+        { "duration": 100, "images": [[496, 93]] },
+        { "duration": 100, "images": [[620, 93]] },
+        { "duration": 100, "images": [[744, 93]] },
+        { "duration": 100, "images": [[868, 93]] },
+        { "duration": 100, "images": [[992, 93]] },
+        { "duration": 100, "images": [[1116, 93]] },
+        { "duration": 100, "images": [[1240, 93]] },
+        { "duration": 100, "images": [[1364, 93]] },
+        { "duration": 100, "images": [[1488, 93]] },
+        { "duration": 100, "images": [[1612, 93]] },
+        { "duration": 100, "images": [[1736, 93]] },
+        { "duration": 100, "images": [[1860, 93]] },
+        { "duration": 100, "images": [[1984, 93]] },
+        { "duration": 100, "images": [[2108, 93]] },
+        { "duration": 100, "images": [[2232, 93]] },
+        { "duration": 100, "images": [[2356, 93]] },
+        { "duration": 100, "images": [[2480, 93]] },
+        { "duration": 100, "images": [[2604, 93]] },
+        { "duration": 100, "images": [[2728, 93]] },
+        { "duration": 100, "images": [[2852, 93]] },
+        { "duration": 100, "images": [[2976, 93]] },
+        { "duration": 100, "images": [[3100, 93]] },
+        { "duration": 100, "images": [[3224, 93]] },
+        { "duration": 100, "images": [[0, 186]] },
+        { "duration": 100, "images": [[124, 186]] },
+        { "duration": 100, "images": [[248, 186]] },
+        { "duration": 100, "images": [[372, 186]] },
+        { "duration": 100, "images": [[496, 186]] },
+        { "duration": 100, "images": [[620, 186]] },
+        { "duration": 100, "images": [[744, 186]] },
+        { "duration": 100, "images": [[868, 186]] },
+        { "duration": 100, "images": [[992, 186]] },
+        { "duration": 100, "images": [[992, 93]] },
+        { "duration": 100, "images": [[868, 93]] },
+        { "duration": 100, "images": [[744, 93]] },
+        { "duration": 100, "images": [[620, 93]] },
+        { "duration": 100, "images": [[496, 93]] },
+        { "duration": 100, "images": [[372, 93]] },
+        { "duration": 100, "images": [[248, 93]] },
+        { "duration": 100, "images": [[124, 93]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "Explain": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[1116, 186]] },
+        { "duration": 100, "images": [[1240, 186]] },
+        { "duration": 900, "images": [[1364, 186]] },
+        { "duration": 100, "images": [[1240, 186]] },
+        { "duration": 100, "images": [[1116, 186]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "GetAttention": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[1240, 651]] },
+        { "duration": 100, "images": [[1364, 651]] },
+        { "duration": 100, "images": [[1488, 651]] },
+        { "duration": 100, "images": [[1612, 651]] },
+        { "duration": 100, "images": [[1736, 651]] },
+        { "duration": 100, "images": [[1860, 651]] },
+        { "duration": 100, "images": [[1984, 651]] },
+        { "duration": 100, "images": [[2108, 651]] },
+        { "duration": 100, "images": [[2232, 651]] },
+        { "duration": 150, "images": [[2356, 651]] },
+        { "duration": 150, "images": [[2232, 651]] },
+        { "duration": 150, "images": [[2356, 651]] },
+        { "duration": 150, "images": [[2232, 651]] },
+        { "duration": 150, "images": [[2480, 651]] },
+        { "duration": 100, "images": [[2604, 651]] },
+        { "duration": 100, "images": [[2728, 651]] },
+        { "duration": 100, "images": [[2852, 651]] },
+        { "duration": 100, "images": [[2976, 651]] },
+        { "duration": 100, "images": [[3100, 651]] },
+        { "duration": 100, "images": [[3224, 651]] },
+        { "duration": 100, "images": [[0, 744]] },
+        { "duration": 100, "images": [[124, 744]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "Wave": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[1116, 1767]] },
+        { "duration": 100, "images": [[1240, 1767]] },
+        { "duration": 100, "images": [[1364, 1767]] },
+        { "duration": 100, "images": [[1488, 1767]] },
+        { "duration": 100, "images": [[1612, 1767]] },
+        { "duration": 100, "images": [[1736, 1767]] },
+        { "duration": 100, "images": [[1860, 1767]] },
+        { "duration": 100, "images": [[1984, 1767]] },
+        { "duration": 100, "images": [[2108, 1767]] },
+        { "duration": 100, "images": [[2232, 1767]] },
+        { "duration": 100, "images": [[2356, 1767]] },
+        { "duration": 100, "images": [[2480, 1767]] },
+        { "duration": 100, "images": [[2604, 1767]] },
+        { "duration": 100, "images": [[2728, 1767]] },
+        { "duration": 100, "images": [[2852, 1767]] },
+        { "duration": 100, "images": [[2976, 1767]] },
+        { "duration": 100, "images": [[3100, 1767]] },
+        { "duration": 100, "images": [[3224, 1767]] },
+        { "duration": 100, "images": [[0, 1860]] },
+        { "duration": 100, "images": [[124, 1860]] },
+        { "duration": 1200, "images": [[248, 1860]] },
+        { "duration": 100, "images": [[372, 1860]] },
+        { "duration": 1300, "images": [[248, 1860]] },
+        { "duration": 50, "images": [[496, 1860]] },
+        { "duration": 50, "images": [[2976, 1767]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "Congratulate": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 10, "images": [[124, 0]] },
+        { "duration": 10, "images": [[248, 0]] },
+        { "duration": 10, "images": [[372, 0]] },
+        { "duration": 10, "images": [[496, 0]] },
+        { "duration": 10, "images": [[620, 0]] },
+        { "duration": 10, "images": [[744, 0]] },
+        { "duration": 10, "images": [[868, 0]] },
+        { "duration": 10, "images": [[992, 0]] },
+        { "duration": 100, "images": [[1116, 0]] },
+        { "duration": 100, "images": [[1240, 0]] },
+        { "duration": 100, "images": [[1364, 0]] },
+        { "duration": 1200, "images": [[1488, 0]] },
+        { "duration": 100, "images": [[1612, 0]] },
+        { "duration": 100, "images": [[1736, 0]] },
+        { "duration": 1200, "images": [[1488, 0]] },
+        { "duration": 100, "images": [[1860, 0]] },
+        { "duration": 100, "images": [[1984, 0]] },
+        { "duration": 100, "images": [[2108, 0]] },
+        { "duration": 100, "images": [[2232, 0]] },
+        { "duration": 100, "images": [[2356, 0]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "LookRight": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[620, 651]] },
+        { "duration": 100, "images": [[744, 651]] },
+        { "duration": 1200, "images": [[868, 651]] },
+        { "duration": 100, "images": [[992, 651]] },
+        { "duration": 100, "images": [[1116, 651]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "LookLeft": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[248, 1488]] },
+        { "duration": 100, "images": [[372, 1488]] },
+        { "duration": 1200, "images": [[496, 1488]] },
+        { "duration": 100, "images": [[620, 1488]] },
+        { "duration": 100, "images": [[744, 1488]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "LookUp": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[1736, 2883]] },
+        { "duration": 100, "images": [[1860, 2883]] },
+        { "duration": 1200, "images": [[1984, 2883]] },
+        { "duration": 100, "images": [[2108, 2883]] },
+        { "duration": 100, "images": [[2232, 2883]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "LookDown": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[2852, 0]] },
+        { "duration": 100, "images": [[2976, 0]] },
+        { "duration": 1200, "images": [[3100, 0]] },
+        { "duration": 100, "images": [[3224, 0]] },
+        { "duration": 100, "images": [[0, 93]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "LookUpLeft": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[868, 1488]] },
+        { "duration": 100, "images": [[992, 1488]] },
+        { "duration": 1200, "images": [[1116, 1488]] },
+        { "duration": 100, "images": [[1240, 1488]] },
+        { "duration": 100, "images": [[1364, 1488]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "LookUpRight": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[248, 744]] },
+        { "duration": 100, "images": [[372, 744]] },
+        { "duration": 1200, "images": [[496, 744]] },
+        { "duration": 100, "images": [[620, 744]] },
+        { "duration": 100, "images": [[744, 744]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "LookDownLeft": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[744, 3069]] },
+        { "duration": 100, "images": [[868, 3069]] },
+        { "duration": 1200, "images": [[992, 3069]] },
+        { "duration": 100, "images": [[1116, 3069]] },
+        { "duration": 100, "images": [[1240, 3069]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "LookDownRight": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[3100, 2325]] },
+        { "duration": 100, "images": [[3224, 2325]] },
+        { "duration": 1200, "images": [[0, 2418]] },
+        { "duration": 100, "images": [[124, 2418]] },
+        { "duration": 100, "images": [[248, 2418]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "GestureUp": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[868, 744]] },
+        { "duration": 100, "images": [[992, 744]] },
+        { "duration": 100, "images": [[1116, 744]] },
+        { "duration": 100, "images": [[1240, 744]] },
+        { "duration": 100, "images": [[1364, 744]] },
+        { "duration": 100, "images": [[1488, 744]] },
+        { "duration": 100, "images": [[1612, 744]] },
+        { "duration": 100, "images": [[1736, 744]] },
+        { "duration": 1200, "images": [[1860, 744]] },
+        { "duration": 100, "images": [[1984, 744]] },
+        { "duration": 100, "images": [[1364, 744]] },
+        { "duration": 100, "images": [[1240, 744]] },
+        { "duration": 100, "images": [[1116, 744]] },
+        { "duration": 100, "images": [[992, 744]] },
+        { "duration": 100, "images": [[868, 744]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "GestureDown": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[1984, 1395]] },
+        { "duration": 100, "images": [[2108, 1395]] },
+        { "duration": 100, "images": [[2232, 1395]] },
+        { "duration": 100, "images": [[2356, 1395]] },
+        { "duration": 100, "images": [[2480, 1395]] },
+        { "duration": 100, "images": [[2604, 1395]] },
+        { "duration": 100, "images": [[2728, 1395]] },
+        { "duration": 100, "images": [[2852, 1395]] },
+        { "duration": 100, "images": [[2976, 1395]] },
+        { "duration": 100, "images": [[3100, 1395]] },
+        { "duration": 100, "images": [[3224, 1395]] },
+        { "duration": 100, "images": [[0, 1488]] },
+        { "duration": 450, "images": [[124, 1488]] },
+        { "duration": 100, "images": [[2356, 1395]] },
+        { "duration": 100, "images": [[2232, 1395]] },
+        { "duration": 100, "images": [[2108, 1395]] },
+        { "duration": 100, "images": [[1984, 1395]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "GestureLeft": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[3100, 1674]] },
+        { "duration": 100, "images": [[3224, 1674]] },
+        { "duration": 100, "images": [[0, 1767]] },
+        { "duration": 100, "images": [[124, 1767]] },
+        { "duration": 100, "images": [[248, 1767]] },
+        { "duration": 100, "images": [[372, 1767]] },
+        { "duration": 100, "images": [[496, 1767]] },
+        { "duration": 100, "images": [[620, 1767]] },
+        { "duration": 1200, "images": [[744, 1767]] },
+        { "duration": 100, "images": [[868, 1767]] },
+        { "duration": 450, "images": [[992, 1767]] },
+        { "duration": 100, "images": [[0, 1767]] },
+        { "duration": 100, "images": [[3224, 1674]] },
+        { "duration": 100, "images": [[3100, 1674]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "GestureRight": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] },
+        { "duration": 100, "images": [[620, 1860]] },
+        { "duration": 100, "images": [[744, 1860]] },
+        { "duration": 100, "images": [[868, 1860]] },
+        { "duration": 100, "images": [[992, 1860]] },
+        { "duration": 100, "images": [[1116, 1860]] },
+        { "duration": 100, "images": [[1240, 1860]] },
+        { "duration": 100, "images": [[1364, 1860]] },
+        { "duration": 100, "images": [[1488, 1860]] },
+        { "duration": 1200, "images": [[1612, 1860]] },
+        { "duration": 100, "images": [[1736, 1860]] },
+        { "duration": 550, "images": [[1116, 1860]] },
+        { "duration": 100, "images": [[992, 1860]] },
+        { "duration": 100, "images": [[868, 1860]] },
+        { "duration": 100, "images": [[744, 1860]] },
+        { "duration": 100, "images": [[620, 1860]] },
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    },
+    "Show": {
+      "frames": [
+        { "duration": 10 },
+        { "duration": 10, "images": [[2728, 0]] },
+        { "duration": 10, "images": [[2604, 0]] },
+        { "duration": 10, "images": [[2480, 0]] },
+        { "duration": 10, "images": [[0, 0]] }
+      ]
+    },
+    "Hide": {
+      "frames": [
+        { "duration": 10, "images": [[0, 0]] },
+        { "duration": 10, "images": [[2480, 0]] },
+        { "duration": 10, "images": [[2604, 0]] },
+        { "duration": 10, "images": [[2728, 0]] },
+        { "duration": 10 }
+      ]
+    },
+    "RestPose": {
+      "frames": [
+        { "duration": 100, "images": [[0, 0]] }
+      ]
+    }
+  }
+}

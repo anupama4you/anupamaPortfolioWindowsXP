@@ -110,7 +110,7 @@ function Footer({
         <img className="footer__icon" src={usb} alt="" />
         <img className="footer__icon" src={risk} alt="" />
         <div style={{ position: 'relative', width: 0, height: 0 }}>
-          <Balloon />
+          {/* <Balloon /> */}
         </div>
         <div className="footer__time">{time}</div>
       </div>

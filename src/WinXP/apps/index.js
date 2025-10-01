@@ -331,7 +331,7 @@ export const appSettings = {
     maximized: true,
     multiInstance: true,
   },
-   outlookExpress: {
+  "outlookExpress": {
     header: {
       icon: outlook,
       title: 'Contact me',

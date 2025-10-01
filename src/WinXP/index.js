@@ -23,6 +23,7 @@ import Footer from './Footer';
 import Windows from './Windows';
 import Icons from './Icons';
 import { DashedBox } from 'components';
+import ClippyAgent from 'components/ClippyAgent';
 
 const initState = {
   apps: [],
@@ -232,7 +233,7 @@ function WinXP() {
     dispatch({ type: FOCUS_DESKTOP });
   }
   function onClickMenuItem(o) {
-    if (o === 'Internet')
+    if (o === 'Internet Explorer')
       dispatch({ type: ADD_APP, payload: appSettings['Internet Explorer'] });
     else if (o === 'Minesweeper')
       dispatch({ type: ADD_APP, payload: appSettings.Minesweeper });
@@ -244,6 +245,10 @@ function WinXP() {
       dispatch({ type: ADD_APP, payload: appSettings.Winamp });
     else if (o === 'Paint')
       dispatch({ type: ADD_APP, payload: appSettings.Paint });
+    else if (o === 'Cmd')
+      dispatch({ type: ADD_APP, payload: appSettings.Cmd });
+    else if (o === 'outlookExpress')
+      dispatch({ type: ADD_APP, payload: appSettings.outlookExpress });
     else if (o === 'Log Off')
       dispatch({ type: POWER_OFF, payload: POWER_STATE.LOG_OFF });
     else if (o === 'Turn Off Computer')
@@ -316,6 +321,9 @@ function WinXP() {
         onMouseDown={onMouseDownFooter}
         onClickMenuItem={onClickMenuItem}
       />
+      <ClippyWrapper>
+        <ClippyAgent />
+      </ClippyWrapper>
       {state.powerState !== POWER_STATE.START && (
         <Modal
           onClose={onModalClose}
@@ -355,6 +363,21 @@ const Container = styled.div`
   animation: ${({ state }) => animation[state]} 5s forwards;
   *:not(input):not(textarea) {
     user-select: none;
+  }
+`;
+
+const ClippyWrapper = styled.div`
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  z-index: 9999;
+  pointer-events: all;
+
+  @media (max-width: 768px) {
+    bottom: 100px;
+    right: 15px;
+    transform: scale(0.8);
+    transform-origin: bottom right;
   }
 `;
 

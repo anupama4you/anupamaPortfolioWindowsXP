@@ -17,6 +17,7 @@ import controlPanel from 'assets/windowsIcons/300(32x32).png';
 import connect from 'assets/windowsIcons/309(32x32).png';
 import printer from 'assets/windowsIcons/549(32x32).png';
 import paint from 'assets/windowsIcons/680(32x32).png';
+import cmd from 'assets/windowsIcons/56(16x16).png';
 import help from 'assets/windowsIcons/747(32x32).png';
 import search from 'assets/windowsIcons/299(32x32).png';
 import run from 'assets/windowsIcons/743(32x32).png';
@@ -60,7 +61,7 @@ function FooterMenu({ className, onClick }) {
               { icon: notepad, text: 'Notepad' },
               { icon: winamp, text: 'Winamp' },
               { icon: paint, text: 'Paint' },
-              { icon: mediaPlayer, text: 'Windows Media Player' },
+              { icon: cmd, text: 'Command Prompt' },
               { icon: messenger, text: 'Windows Messenger' },
             ]}
           />
