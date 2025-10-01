@@ -12,17 +12,18 @@
         "assets/projects/wecare/3.png",
         "assets/projects/wecare/4.png"
       ],
-      "youtubeId": "dQw4w9WgXcQ",
+      "ResearchPaper": "assets/projects/wecare/wecare-research.pdf",
+      "youtubeId": "euMmiLSGGCU",
       "technologies": [
-        "Flutter",
-        "Python",
-        "PyTorch",
-        "Raspberry Pi",
-        "Edge Computing"
+        { "name": "Flutter", "icon": "devicon-flutter-plain colored" },
+        { "name": "Python", "icon": "devicon-python-plain colored" },
+        { "name": "PyTorch", "icon": "devicon-pytorch-original colored" },
+        { "name": "Raspberry Pi", "icon": "devicon-raspberrypi-line colored" },
+        { "name": "Edge Computing", "icon": "devicon-embeddedc-plain" }
       ],
       "category": "Mobile & IoT",
       "year": "2023",
-      "github": "https://github.com/yourusername/wecare",
+      "github": "https://github.com/anupama4you/wecare",
       "demo": null,
       "highlights": [
         "Real-time fall detection using wearable sensors",
@@ -39,25 +40,26 @@
       "description": "An AI-powered tool for leaf disease detection to support farmers and home growers with actionable treatment recommendations.",
       "icon": "680",
       "images": [
-        "/assets/projects/cropsense/screenshot1.png",
-        "/assets/projects/cropsense/screenshot2.png",
-        "/assets/projects/cropsense/screenshot3.png",
-        "/assets/projects/cropsense/screenshot4.png",
-        "/assets/projects/cropsense/screenshot5.png"
+        "/assets/projects/cropsense/1.png",
+        "/assets/projects/cropsense/2.png",
+        "/assets/projects/cropsense/3.png",
+        "/assets/projects/cropsense/4.png",
+        "/assets/projects/cropsense/5.png"
       ],
       "youtubeId": null,
       "technologies": [
-        "React",
-        "Node.js",
-        "Flask",
-        "Python",
-        "MongoDB",
-        "Deep Learning"
+        { "name": "React", "icon": "devicon-react-original colored" },
+        { "name": "Node.js", "icon": "devicon-nodejs-plain colored" },
+        { "name": "Flask", "icon": "devicon-flask-original" },
+        { "name": "Python", "icon": "devicon-python-plain colored" },
+        { "name": "MongoDB", "icon": "devicon-mongodb-plain colored" },
+        { "name": "Deep Learning", "icon": "devicon-tensorflow-original colored" }
       ],
       "category": "Web & AI",
       "year": "2023",
-      "github": "https://github.com/yourusername/cropsense",
-      "demo": "https://cropsense.demo.com",
+      "github": "https://github.com/anupama4you/Cropsense_",
+      "demo": null,
+      "ResearchPaper": "assets/projects/cropsense/cropsense-research.pdf",
       "highlights": [
         "Image-based disease detection with confidence scores",
         "Treatment suggestions and agricultural references",
@@ -72,24 +74,20 @@
       "tagline": "Privacy-first dating application",
       "description": "A secure dating platform built with privacy-by-design principles, enabling meaningful connections during the COVID-19 pandemic.",
       "icon": "327",
-      "images": [
-        "/assets/projects/findlove/screenshot1.png",
-        "/assets/projects/findlove/screenshot2.png",
-        "/assets/projects/findlove/screenshot3.png",
-        "/assets/projects/findlove/screenshot4.png"
-      ],
-      "youtubeId": null,
+      "images": [],
+      "youtubeId": "IdB-vwX3QfM",
       "technologies": [
-        "React",
-        "Node.js",
-        "MySQL",
-        "WebSockets",
-        "JWT",
-        "Material UI"
+        { "name": "React", "icon": "devicon-react-original colored" },
+        { "name": "Node.js", "icon": "devicon-nodejs-plain colored" },
+        { "name": "MySQL", "icon": "devicon-mysql-plain colored" },
+        { "name": "WebSockets", "icon": "devicon-socketio-original" },
+        { "name": "JWT", "icon": "devicon-json-plain" },
+        { "name": "Material UI", "icon": "devicon-materialui-plain colored" }
       ],
+      "ResearchPaper": "assets/projects/findlove/findlove.pdf",
       "category": "Web & Social",
       "year": "2021",
-      "github": "https://github.com/yourusername/findlove",
+      "github": "https://github.com/anupama4you/FindLove",
       "demo": null,
       "highlights": [
         "JWT authentication with password hashing",
@@ -101,28 +99,32 @@
     },
     {
       "id": "devest",
-      "name": "Devest Marketing",
+      "name": "DEVEST",
       "tagline": "Bilingual company website with Laravel",
       "description": "A fully dynamic, bilingual company site built for Devest Marketing in Egypt during a short-term internship.",
       "icon": "308",
       "images": [
-        "/assets/projects/devest/screenshot1.png",
-        "/assets/projects/devest/screenshot2.png",
-        "/assets/projects/devest/screenshot3.png",
-        "/assets/projects/devest/screenshot4.png"
+        "/assets/projects/devest/1.jpg",
+        "/assets/projects/devest/2.jpg",
+        "/assets/projects/devest/3.jpg",
+        "/assets/projects/devest/4.jpg",
+        "/assets/projects/devest/5.jpg",
+        "/assets/projects/devest/6.jpg",
+        "/assets/projects/devest/7.jpg",
+        "/assets/projects/devest/8.jpg"
       ],
       "youtubeId": null,
       "technologies": [
-        "Laravel",
-        "PHP",
-        "MySQL",
-        "HTML/CSS",
-        "JavaScript"
+        { "name": "Laravel", "icon": "devicon-laravel-original colored" },
+        { "name": "PHP", "icon": "devicon-php-plain colored" },
+        { "name": "MySQL", "icon": "devicon-mysql-plain colored" },
+        { "name": "HTML/CSS", "icon": "devicon-html5-plain colored" },
+        { "name": "JavaScript", "icon": "devicon-javascript-plain colored" }
       ],
       "category": "Web",
       "year": "2020",
-      "github": null,
-      "demo": "https://devestmarketing.com",
+      "github": "https://github.com/anupama4you/devest_website",
+      "demo": "https://devest.co",
       "highlights": [
         "Full bilingual support (English & Arabic)",
         "Right-to-left (RTL) text architecture",
@@ -137,23 +139,18 @@
       "tagline": "Event management and listing platform",
       "description": "A streamlined event management website for listing, categorizing, and promoting events with intuitive discoverability.",
       "icon": "680",
-      "images": [
-        "/assets/projects/devent/screenshot1.png",
-        "/assets/projects/devent/screenshot2.png",
-        "/assets/projects/devent/screenshot3.png",
-        "/assets/projects/devent/screenshot4.png"
-      ],
-      "youtubeId": null,
+      "images": [],
+      "youtubeId": "SYnilqA6ujY",
       "technologies": [
-        "PHP",
-        "JavaScript",
-        "CSS",
-        "SQL"
+        { "name": "PHP", "icon": "devicon-php-plain colored" },
+        { "name": "JavaScript", "icon": "devicon-javascript-plain colored" },
+        { "name": "CSS", "icon": "devicon-css3-plain colored" },
+        { "name": "SQL", "icon": "devicon-mysql-plain colored" }
       ],
       "category": "Web",
       "year": "2020",
-      "github": "https://github.com/yourusername/devent",
-      "demo": null,
+      "github": "https://github.com/anupama4you/DeventFrontend",
+      "demo": "https://deventglobal.com",
       "highlights": [
         "Search, filters, and calendar views",
         "Clear event pages with CTAs",
@@ -168,24 +165,18 @@
       "tagline": "Handwritten prescription reader",
       "description": "A mobile app concept that reads handwritten prescriptions and connects users with nearby pharmacies using OCR.",
       "icon": "327",
-      "images": [
-        "/assets/projects/medixo/screenshot1.png",
-        "/assets/projects/medixo/screenshot2.png",
-        "/assets/projects/medixo/screenshot3.png",
-        "/assets/projects/medixo/screenshot4.png",
-        "/assets/projects/medixo/screenshot5.png"
-      ],
+      "images": [],
       "youtubeId": null,
       "technologies": [
-        "Python",
-        "Kotlin",
-        "Firebase",
-        "Google Vision API",
-        "OCR"
+        { "name": "Python", "icon": "devicon-python-plain colored" },
+        { "name": "Kotlin", "icon": "devicon-kotlin-plain colored" },
+        { "name": "Firebase", "icon": "devicon-firebase-plain colored" },
+        { "name": "Google Vision API", "icon": "devicon-google-plain colored" },
+        { "name": "OCR", "icon": "devicon-opencv-plain colored" }
       ],
       "category": "Mobile & AI",
       "year": "2022",
-      "github": "https://github.com/yourusername/medixo",
+      "github": "",
       "demo": null,
       "highlights": [
         "OCR-powered prescription text extraction",
@@ -201,21 +192,16 @@
       "tagline": "Unity procedural game prototype",
       "description": "A Unity prototype exploring procedural level generation and difficulty scaling in a fast-paced game environment.",
       "icon": "680",
-      "images": [
-        "/assets/projects/endlessrunner/screenshot1.png",
-        "/assets/projects/endlessrunner/screenshot2.png",
-        "/assets/projects/endlessrunner/screenshot3.png",
-        "/assets/projects/endlessrunner/screenshot4.png"
-      ],
+      "images": [],
       "youtubeId": null,
       "technologies": [
-        "Unity",
-        "C#",
-        "Game Development"
+        { "name": "Unity", "icon": "devicon-unity-plain" },
+        { "name": "C#", "icon": "devicon-csharp-plain colored" },
+        { "name": "Game Development", "icon": "devicon-godot-plain colored" }
       ],
       "category": "Game Development",
       "year": "2021",
-      "github": "https://github.com/yourusername/endlessrunner",
+      "github": "",
       "demo": null,
       "highlights": [
         "Dynamic obstacle spawning",
@@ -231,23 +217,18 @@
       "tagline": "Character builder for role-playing games",
       "description": "A companion app for assembling and managing character builds by consuming an external RPG API.",
       "icon": "308",
-      "images": [
-        "/assets/projects/dnd/screenshot1.png",
-        "/assets/projects/dnd/screenshot2.png",
-        "/assets/projects/dnd/screenshot3.png",
-        "/assets/projects/dnd/screenshot4.png"
-      ],
+      "images": [],
       "youtubeId": null,
       "technologies": [
-        "ASP.NET",
-        "C#",
-        "SQLite",
-        "JavaScript",
-        "CSS"
+        { "name": "ASP.NET", "icon": "devicon-dotnetcore-plain colored" },
+        { "name": "C#", "icon": "devicon-csharp-plain colored" },
+        { "name": "SQLite", "icon": "devicon-sqlite-plain colored" },
+        { "name": "JavaScript", "icon": "devicon-javascript-plain colored" },
+        { "name": "CSS", "icon": "devicon-css3-plain colored" }
       ],
       "category": "Desktop & Web",
       "year": "2022",
-      "github": "https://github.com/yourusername/dnd-builder",
+      "github": "",
       "demo": null,
       "highlights": [
         "External RPG API integration",
@@ -263,24 +244,19 @@
       "tagline": "Premium Shopify theme for e-commerce",
       "description": "A colorful, conversion-optimized Shopify theme designed for modern lifestyle and fashion brands.",
       "icon": "676",
-      "images": [
-        "/assets/projects/zeil/screenshot1.png",
-        "/assets/projects/zeil/screenshot2.png",
-        "/assets/projects/zeil/screenshot3.png",
-        "/assets/projects/zeil/screenshot4.png"
-      ],
-      "youtubeId": null,
+      "images": [],
+      "youtubeId": "OpdcrRV3X14",
       "technologies": [
-        "Shopify",
-        "Liquid",
-        "JavaScript",
-        "CSS",
-        "HTML"
+        { "name": "Shopify", "icon": "devicon-almalinux-plain colored" },
+        { "name": "Liquid", "icon": "devicon-clion-plain colored" },
+        { "name": "JavaScript", "icon": "devicon-javascript-plain colored" },
+        { "name": "CSS", "icon": "devicon-css3-plain colored" },
+        { "name": "HTML", "icon": "devicon-html5-plain colored" }
       ],
       "category": "E-commerce",
       "year": "2023",
-      "github": null,
-      "demo": "https://zeil-theme.myshopify.com",
+      "github": "https://github.com/anupama4you/zeil",
+      "demo": "https://zeil.store",
       "highlights": [
         "High-converting product page layouts",
         "Built-in upsells and bundling features",

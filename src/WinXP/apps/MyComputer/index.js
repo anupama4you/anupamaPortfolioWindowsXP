@@ -23,13 +23,17 @@ import cd from 'assets/windowsIcons/111(48x48).png';
 import dropdown from 'assets/windowsIcons/dropdown.png';
 import pullup from 'assets/windowsIcons/pullup.png';
 import logo from 'assets/github-logo.png';
-import mine from 'assets/minesweeper/mine-icon.png';
+import medium from 'assets/othericons/medium.png';
 import windows from 'assets/windowsIcons/windows.png';
+import linkedIn from 'assets/othericons/linkedin.png';
+import GitHubButton from 'react-github-btn'
 
 // Import your projects JSON here
 import projectsJSON from 'data/projects.json';
+import resumeJSON from 'data/resume.json';
 
 const projectsData = projectsJSON.projects;
+const socialProfiles = resumeJSON.personal.social;
 
 function MyComputer({ onClose }) {
   const [currentPath, setCurrentPath] = useState(['My Computer']);
@@ -328,52 +332,59 @@ function MyComputer({ onClose }) {
                     {currentProject.technologies?.map((tech, i) => (
                       <div key={i} className="com__content__left__card__row">
                         <div className="com__content__left__card__text">
-                          • {tech}
+                          {tech.name}
                         </div>
                       </div>
                     ))}
                   </>
                 ) : (
-                  <>
-                    <div className="com__content__left__card__row">
-                      <iframe
-                        title="ghbtn"
-                        style={{ margin: "0 0 3px -1px", height: "30px" }}
-                        src="https://ghbtns.com/github-btn.html?user=anupama4you&repo=winXP&type=star&count=true&size=large"
-                        frameBorder="0"
-                        scrolling="0"
-                        width="170px"
-                        height="20px"
-                      />
-                    </div>
-                    <div className="com__content__left__card__row">
-                      <img
-                        className="com__content__left__card__img"
-                        src=""
-                        alt="control"
-                      />
-                      <a
-                        href="https://medium.com/@anupama4you"
+                    <>
+                      <div className="com__content__left__card__row">
+                        <GitHubButton href="https://github.com/anupama4you/anupamaPortfolioWindowsXP" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Star anupama4you/anupamaPortfolioWindowsXP on GitHub">Star</GitHubButton>
+                      </div>
+                      <div className="com__content__left__card__row">
+                        <img
+                          className="com__content__left__card__img"
+                          src={logo}
+                          alt="github"
+                        />
+                        <a
+                        href={socialProfiles.github}
                         target="_blank"
                         rel="noreferrer"
                         className="com__content__left__card__text link"
                       >
-                        Medium
+                        GitHub
                       </a>
                     </div>
                     <div className="com__content__left__card__row">
                       <img
                         className="com__content__left__card__img"
-                        src={mine}
-                        alt="control"
+                        src={linkedIn}
+                        alt="linkedin"
                       />
                       <a
-                        href="https://github.com/anupama4you/minesweeper"
+                        href={socialProfiles.linkedin}
                         target="_blank"
                         rel="noreferrer"
                         className="com__content__left__card__text link"
                       >
-                        Minesweeper
+                        LinkedIn
+                      </a>
+                    </div>
+                    <div className="com__content__left__card__row">
+                      <img
+                        className="com__content__left__card__img"
+                        src={medium}
+                        alt="medium"
+                      />
+                      <a
+                        href={socialProfiles.medium}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="com__content__left__card__text link"
+                      >
+                        Medium
                       </a>
                     </div>
                   </>
@@ -416,7 +427,9 @@ function MyComputer({ onClose }) {
                         <span
                           key={i}
                           style={{
-                            display: "inline-block",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "5px",
                             padding: "4px 8px",
                             marginRight: "5px",
                             marginBottom: "5px",
@@ -425,7 +438,8 @@ function MyComputer({ onClose }) {
                             fontSize: "10px",
                           }}
                         >
-                          {tech}
+                          <i className={tech.icon} style={{ fontSize: '14px' }}></i>
+                          {tech.name}
                         </span>
                       ))}
                     </div>
@@ -490,6 +504,24 @@ function MyComputer({ onClose }) {
                           }}
                         >
                           View Demo
+                        </a>
+                      )}
+                      {currentProject.ResearchPaper && (
+                        <a
+                          href={currentProject.ResearchPaper}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            display: "inline-block",
+                            padding: "8px 16px",
+                            background: "#6f42c1",
+                            color: "white",
+                            textDecoration: "none",
+                            borderRadius: "3px",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Research Paper
                         </a>
                       )}
                     </div>

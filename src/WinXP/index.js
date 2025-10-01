@@ -25,10 +25,10 @@ import Icons from './Icons';
 import { DashedBox } from 'components';
 
 const initState = {
-  apps: defaultAppState,
-  nextAppID: defaultAppState.length,
-  nextZIndex: defaultAppState.length,
-  focusing: FOCUSING.WINDOW,
+  apps: [],
+  nextAppID: 0,
+  nextZIndex: 0,
+  focusing: FOCUSING.DESKTOP,
   icons: defaultIconState,
   selecting: false,
   powerState: POWER_STATE.START,

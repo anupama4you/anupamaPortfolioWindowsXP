@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 function ImageGallery({ images, projectName }) {
@@ -57,14 +58,14 @@ function ImageGallery({ images, projectName }) {
         ))}
       </GalleryGrid>
 
-      {lightboxOpen && (
+      {lightboxOpen && ReactDOM.createPortal(
         <LightboxOverlay onClick={closeLightbox}>
           <LightboxContent onClick={(e) => e.stopPropagation()}>
             <CloseButton onClick={(e) => {
               e.stopPropagation();
               closeLightbox();
             }}>×</CloseButton>
-            
+
             {images.length > 1 && (
               <>
                 <NavButton className="prev" onClick={(e) => {
@@ -107,7 +108,8 @@ function ImageGallery({ images, projectName }) {
               </ThumbnailStrip>
             )}
           </LightboxContent>
-        </LightboxOverlay>
+        </LightboxOverlay>,
+        document.body
       )}
     </>
   );

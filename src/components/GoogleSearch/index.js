@@ -234,7 +234,6 @@ function GoogleSearch({ route, query, onSearch, goMain }) {
             <PageNext>Next</PageNext>
           </Pagination>
         </section>
-        <br/>
 
         <footer>
           <section className="upper">
@@ -650,12 +649,11 @@ const SearchPage = styled.div`
   }
   
   .content {
-    padding: 20px 0 0 170px;
+    padding: 0 0 0 170px;
   }
   
   footer {
-    position: absolute;
-    bottom: 0;
+    position: relative;
     width: 100%;
     height: 83px;
     border-top: 1px solid rgba(0, 0, 0, 0.07);
@@ -767,7 +765,7 @@ const EasterEgg = styled.div`
 
 const Pagination = styled.div`
   margin-top: 40px;
-  margin-bottom: 120px;
+  margin-bottom: 40px;
   display: flex;
   gap: 10px;
   align-items: center;

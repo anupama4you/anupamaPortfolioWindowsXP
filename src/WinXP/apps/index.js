@@ -16,6 +16,10 @@ import notepadLarge from 'assets/windowsIcons/327(32x32).png';
 import winamp from 'assets/windowsIcons/winamp.png';
 import paintLarge from 'assets/windowsIcons/680(32x32).png';
 import paint from 'assets/windowsIcons/680(16x16).png';
+import outlook from 'assets/windowsIcons/887(16x16).png';
+import outlookLarge from 'assets/windowsIcons/887(32x32).png';
+import cmd from 'assets/windowsIcons/56(16x16).png';
+import cmdLarge from 'assets/windowsIcons/56(32x32).png';
 import CMD from './cmd';
 import outlookExpress from './outlookExpress';
 
@@ -45,7 +49,7 @@ export const defaultAppState = [
     },
     resizable: true,
     minimized: false,
-    maximized: window.innerWidth < 800,
+    maximized: true,
     id: genId(),
     zIndex: genIndex(),
   },
@@ -106,7 +110,7 @@ export const defaultAppState = [
     },
     resizable: true,
     minimized: false,
-    maximized: window.innerWidth < 800,
+    maximized: true,
     id: genId(),
     zIndex: genIndex(),
   },
@@ -157,15 +161,15 @@ export const defaultIconState = [
   },
   {
     id: 6,
-    icon: paintLarge,
+    icon: cmdLarge,
     title: 'Cmd',
     component: CMD,
     isFocus: false,
   },
    {
     id: 7,
-    icon: paintLarge,
-    title: 'OutLook Express',
+    icon: outlookLarge,
+    title: 'Contact Me',
     component: outlookExpress,
     isFocus: false,
   },
@@ -188,7 +192,7 @@ export const appSettings = {
     },
     resizable: true,
     minimized: false,
-    maximized: window.innerWidth < 800,
+    maximized: true,
     multiInstance: true,
   },
   Minesweeper: {
@@ -247,7 +251,7 @@ export const appSettings = {
     },
     resizable: true,
     minimized: false,
-    maximized: window.innerWidth < 800,
+    maximized: true,
     multiInstance: false,
   },
   Notepad: {
@@ -266,7 +270,7 @@ export const appSettings = {
     },
     resizable: true,
     minimized: false,
-    maximized: window.innerWidth < 800,
+    maximized: true,
     multiInstance: true,
   },
   Winamp: {
@@ -305,12 +309,12 @@ export const appSettings = {
     },
     resizable: true,
     minimized: false,
-    maximized: window.innerWidth < 800,
+    maximized: true,
     multiInstance: true,
   },
   Cmd: {
     header: {
-      icon: paint,
+      icon: cmd,
       title: 'Untitled - Paint',
     },
     component: CMD,
@@ -324,12 +328,12 @@ export const appSettings = {
     },
     resizable: true,
     minimized: false,
-    maximized: window.innerWidth < 800,
+    maximized: true,
     multiInstance: true,
   },
    outlookExpress: {
     header: {
-      icon: paint,
+      icon: outlook,
       title: 'Contact me',
     },
     component: outlookExpress,
@@ -343,9 +347,9 @@ export const appSettings = {
     },
     resizable: true,
     minimized: false,
-    maximized: window.innerWidth < 800,
+    maximized: true,
     multiInstance: true,
   },
 };
 
-export { InternetExplorer, Minesweeper, ErrorBox, MyComputer, Notepad, Winamp, CMD, Paint, outlookExpress };
+export { InternetExplorer, Minesweeper, ErrorBox, MyComputer, Notepad, CMD, Paint, outlookExpress };
