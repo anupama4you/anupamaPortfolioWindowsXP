@@ -1,4 +1,4 @@
-import React, { useReducer, useRef, useCallback } from 'react';
+import React, { useReducer, useRef, useCallback, useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import useMouse from 'react-use/lib/useMouse';
 
@@ -179,6 +179,43 @@ function WinXP() {
   const ref = useRef(null);
   const mouse = useMouse(ref);
   const focusedAppId = getFocusedAppId();
+
+  // Typing animation state
+  const roles = [
+    'Full-Stack Developer',
+    'ML Engineer',
+    'Software Engineer',
+    'AI Enthusiast',
+    'Problem Solver'
+  ];
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentRole = roles[roleIndex];
+    const typingSpeed = isDeleting ? 50 : 100;
+    const pauseTime = isDeleting ? 500 : 2000;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentRole.length) {
+          setDisplayText(currentRole.substring(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(currentRole.substring(0, displayText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, roleIndex]);
   const onFocusApp = useCallback(id => {
     dispatch({ type: FOCUS_APP, payload: id });
   }, []);
@@ -295,6 +332,14 @@ function WinXP() {
       onMouseDown={onMouseDownDesktop}
       state={state.powerState}
     >
+      <HeroText>
+        <WaveEmoji>👋</WaveEmoji>
+        <Greeting>Hey I'm Anupama</Greeting>
+        <RoleContainer>
+          <RoleText>{displayText}</RoleText>
+          <Cursor>|</Cursor>
+        </RoleContainer>
+      </HeroText>
       <Icons
         icons={state.icons}
         onMouseDown={onMouseDownIcon}
@@ -358,7 +403,7 @@ const Container = styled.div`
   height: 100%;
   overflow: hidden;
   position: relative;
-  background: url(https://i.imgur.com/Zk6TR5k.jpg) no-repeat center center fixed;
+  background: url(assets/winxp/wallpaper.jpeg) no-repeat center center fixed;
   background-size: cover;
   animation: ${({ state }) => animation[state]} 5s forwards;
   *:not(input):not(textarea) {
@@ -378,6 +423,109 @@ const ClippyWrapper = styled.div`
     right: 15px;
     transform: scale(0.8);
     transform-origin: bottom right;
+  }
+`;
+
+const blinkCursor = keyframes`
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const wave = keyframes`
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20%, 40% { transform: rotate(-8deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(-4deg); }
+  70% { transform: rotate(0deg); }
+`;
+
+const HeroText = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 0;
+  pointer-events: none;
+  animation: ${fadeIn} 1s ease-out;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(0, 0, 0, 0.5);
+  will-change: transform;
+`;
+
+const WaveEmoji = styled.span`
+  display: inline-block;
+  font-size: 48px;
+  margin-right: 10px;
+  animation: ${wave} 2.5s infinite;
+  animation-delay: 0.5s;
+`;
+
+const Greeting = styled.div`
+  font-family: Tahoma, 'Noto Sans', sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
+`;
+
+const RoleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 48px;
+`;
+
+const RoleText = styled.div`
+  font-family: Tahoma, 'Noto Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  padding: 8px 24px;
+  border-radius: 4px;
+  backdrop-filter: blur(2px);
+  min-width: 320px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    min-width: 220px;
+    padding: 6px 16px;
+  }
+`;
+
+const Cursor = styled.span`
+  font-family: Tahoma, 'Noto Sans', sans-serif;
+  font-size: 32px;
+  color: #ffffff;
+  animation: ${blinkCursor} 1s infinite;
+  font-weight: 300;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
   }
 `;
 

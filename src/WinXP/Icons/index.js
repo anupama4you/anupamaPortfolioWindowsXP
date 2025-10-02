@@ -94,17 +94,19 @@ const IconsContainer = styled.div`
 `;
 
 const StyledIcon = styled(Icon)`
-  width: 70px;
-  margin-bottom: 30px;
+  width: 90px;
+  margin-bottom: 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+
   &__text__container {
     width: 100%;
-    font-size: 10px;
+    font-size: 11px;
     color: white;
-    text-shadow: 0 1px 1px black;
-    margin-top: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    margin-top: 6px;
     display: flex;
     justify-content: center;
 
@@ -120,11 +122,12 @@ const StyledIcon = styled(Icon)`
     }
   }
   &__text {
-    padding: 0 3px 2px;
+    padding: 1px 4px 2px;
     background-color: ${({ isFocus, displayFocus }) =>
       isFocus && displayFocus ? '#0b61ff' : 'transparent'};
     text-align: center;
     flex-shrink: 1;
+    border-radius: 2px;
   }
   &__img__container {
     width: 30px;

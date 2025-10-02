@@ -97,7 +97,7 @@ export const defaultAppState = [
   {
     component: MyComputer,
     header: {
-      title: 'My Computer',
+      title: 'My Projects',
       icon: computer,
     },
     defaultSize: {
@@ -134,42 +134,42 @@ export const defaultIconState = [
   {
     id: 2,
     icon: computerLarge,
-    title: 'My Computer',
+    title: 'My Projects',
     component: MyComputer,
     isFocus: false,
   },
   {
     id: 3,
     icon: notepadLarge,
-    title: 'Notepad',
+    title: 'Resume',
     component: Notepad,
     isFocus: false,
   },
   {
     id: 4,
     icon: winamp,
-    title: 'Winamp',
+    title: 'Music Player',
     component: Winamp,
     isFocus: false,
   },
   {
     id: 5,
     icon: paintLarge,
-    title: 'Paint',
+    title: 'My Life',
     component: Paint,
     isFocus: false,
   },
   {
     id: 6,
     icon: cmdLarge,
-    title: 'Cmd',
+    title: 'Terminal',
     component: CMD,
     isFocus: false,
   },
    {
     id: 7,
     icon: outlookLarge,
-    title: 'Contact Me',
+    title: 'Get In Touch',
     component: outlookExpress,
     isFocus: false,
   },
@@ -238,7 +238,7 @@ export const appSettings = {
   'My Computer': {
     header: {
       icon: computer,
-      title: 'My Computer',
+      title: 'My Projects',
     },
     component: MyComputer,
     defaultSize: {

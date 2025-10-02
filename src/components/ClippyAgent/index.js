@@ -18,35 +18,12 @@ const WELCOME_INTERVALS = [12000, 18000, 25000, 30000, 40000];
 // Suggested questions for users
 const suggestedQuestions = [
     "How will AI change jobs in the next decade?",
-    "What's the difference between AGI and narrow AI?",
-    "Will AI become conscious or sentient?",
-    "How can we ensure AI remains safe and beneficial?",
     "What role will humans play in an AI-driven world?",
+    "Will AI become conscious or sentient?",
+    "What's the difference between AGI and narrow AI?",
+    "How can we ensure AI remains safe and beneficial?",
     "How will AI transform education and learning?"
-];
-
-// Component to render formatted text
-function FormattedText({ text }) {
-    const lines = text.split('\n');
-
-    return (
-        <div style={{ whiteSpace: 'pre-wrap', fontFamily: 'Lucida Console, Courier New, monospace', fontSize: '12px', lineHeight: '16px' }}>
-            {lines.map((line, index) => {
-                const isBorder = line.match(/^[=]+$/);
-                const isMainHeader = line.includes('ANUPAMA DILSHAN');
-                const isSectionHeader = line.match(/^[A-Z\s&]+$/) && line.trim().length > 3 && !isBorder;
-
-                const shouldBeBold = isMainHeader || isSectionHeader;
-
-                return (
-                    <div key={index} style={{ fontWeight: shouldBeBold ? 'bold' : 'normal' }}>
-                        {line || '\u00A0'}
-                    </div>
-                );
-            })}
-        </div>
-    );
-}
+]; 
 
 export default function ClippyAgent({
     spriteUrl = 'assets/clippy/clippy-sprite.png',
@@ -258,7 +235,7 @@ export default function ClippyAgent({
 
             if (messages.length === 0) {
                 setTimeout(() => {
-                    addMessage("Welcome to the future! 🤖 I'm Clippy, your guide to understanding the AI revolution. Let me help you explore how artificial intelligence is reshaping our world!", 'clippy');
+                    addMessage("Welcome to the future! 🤖 I'm Clippy, Anupama brought me back to life. Let me help you explore how artificial intelligence is reshaping our world!", 'clippy');
                 }, 500);
 
                 // Show suggested questions after welcome
@@ -374,7 +351,7 @@ RESPONSE STYLE:
 Remember: You're here to educate, inspire, and help people understand the profound changes AI brings!`;
 
 const ai = new GoogleGenAI({apiKey: geminiApiKey});
-            const response = await ai.models.generateContent({
+            const result = await ai.models.generateContent({
                 model: "gemini-2.5-flash",
                 contents: [{
                     parts: [{
@@ -382,12 +359,8 @@ const ai = new GoogleGenAI({apiKey: geminiApiKey});
                     }]
                 }]
             });
-            console.log(response)
 
-            if (!response.ok) throw new Error('Failed to get response');
-
-            const data = await response.json();
-            const aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+            const aiResponse = result?.candidates?.[0]?.content?.parts?.[0]?.text ||
                 "I'm having trouble processing that right now. Try asking about AI's impact on society or the future of work! 🤔";
 
             const animation = determineAnimation(aiResponse);
@@ -443,7 +416,7 @@ const ai = new GoogleGenAI({apiKey: geminiApiKey});
                     <ChatHeader>
                         <ChatHeaderContent>
                             <ChatIcon>📎</ChatIcon>
-                            <ChatTitle>The AI Revolution with Clippy</ChatTitle>
+                            <ChatTitle>AI Expert Clippy</ChatTitle>
                         </ChatHeaderContent>
                         <CloseBtn onClick={toggleChat}>
                             <span className="close-x">×</span>
@@ -457,7 +430,11 @@ const ai = new GoogleGenAI({apiKey: geminiApiKey});
                                 className={message.type}
                                 onClick={() => message.type === 'suggestion' && handleSuggestionClick(message.content.replace('📌 ', ''))}
                             >
-                                {message.type === 'clippy' && <MessageAvatar>📎</MessageAvatar>}
+                                {message.type === 'clippy' && (
+                                    <MessageAvatar>
+                                        <img src="assets/clippy/dp.png" alt="Clippy" />
+                                    </MessageAvatar>
+                                )}
                                 <MessageContent className={message.type === 'suggestion' ? 'suggestion' : ''}>
                                     {message.content}
                                 </MessageContent>
@@ -466,7 +443,9 @@ const ai = new GoogleGenAI({apiKey: geminiApiKey});
 
                         {isTyping && (
                             <Message className="clippy typing">
-                                <MessageAvatar>📎</MessageAvatar>
+                                <MessageAvatar>
+                                    <img src="assets/clippy/dp.png" alt="Clippy" />
+                                </MessageAvatar>
                                 <MessageContent>
                                     <TypingIndicator>
                                         <span></span><span></span><span></span>
@@ -663,10 +642,10 @@ const ChatInterface = styled.div`
   right: 20px;
   width: 380px;
   height: 450px;
-  background: #ECE9D8;
+  background: linear-gradient(to right, #edede5 0%, #ede8cd 100%);
   border: 1px solid #7f9db9;
   border-radius: 8px 8px 0 0;
-  box-shadow: 
+  box-shadow:
     0 8px 25px rgba(0,0,0,0.4),
     inset 1px 1px 0 rgba(255,255,255,0.8);
   display: flex;
@@ -824,6 +803,13 @@ const MessageAvatar = styled.div`
   border-radius: 50%;
   box-shadow: inset 1px 1px 0 rgba(255,255,255,0.8);
   flex-shrink: 0;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const MessageContent = styled.div`
@@ -906,7 +892,7 @@ const TypingIndicator = styled.div`
 
 const ChatInputContainer = styled.div`
   padding: 8px;
-  background: #ECE9D8;
+  background: linear-gradient(to right, #edede5 0%, #ede8cd 100%);
   border-top: 1px solid #c0c0c0;
   display: flex;
   gap: 6px;
