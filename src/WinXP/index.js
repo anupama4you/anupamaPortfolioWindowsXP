@@ -270,25 +270,29 @@ function WinXP() {
     dispatch({ type: FOCUS_DESKTOP });
   }
   function onClickMenuItem(o) {
-    if (o === 'Internet Explorer')
+    // Extract text content if o is a React element
+    const text = typeof o === 'string' ? o : typeof o === 'object' && o.props && o.props.children ?
+      (Array.isArray(o.props.children) ? o.props.children[0] : o.props.children) : o;
+
+    if (text === 'Internet' || text === 'Internet Explorer')
       dispatch({ type: ADD_APP, payload: appSettings['Internet Explorer'] });
-    else if (o === 'Minesweeper')
-      dispatch({ type: ADD_APP, payload: appSettings.Minesweeper });
-    else if (o === 'My Computer')
-      dispatch({ type: ADD_APP, payload: appSettings['My Computer'] });
-    else if (o === 'Notepad')
-      dispatch({ type: ADD_APP, payload: appSettings.Notepad });
-    else if (o === 'Winamp')
-      dispatch({ type: ADD_APP, payload: appSettings.Winamp });
-    else if (o === 'Paint')
-      dispatch({ type: ADD_APP, payload: appSettings.Paint });
-    else if (o === 'Cmd')
-      dispatch({ type: ADD_APP, payload: appSettings.Cmd });
-    else if (o === 'outlookExpress')
+    else if (text === 'E-mail' || text === 'Outlook Express')
       dispatch({ type: ADD_APP, payload: appSettings.outlookExpress });
-    else if (o === 'Log Off')
+    else if (text === 'Minesweeper')
+      dispatch({ type: ADD_APP, payload: appSettings.Minesweeper });
+    else if (text === 'My Computer')
+      dispatch({ type: ADD_APP, payload: appSettings['My Computer'] });
+    else if (text === 'Notepad')
+      dispatch({ type: ADD_APP, payload: appSettings.Notepad });
+    else if (text === 'Winamp')
+      dispatch({ type: ADD_APP, payload: appSettings.Winamp });
+    else if (text === 'Paint')
+      dispatch({ type: ADD_APP, payload: appSettings.Paint });
+    else if (text === 'Command Prompt' || text === 'Cmd')
+      dispatch({ type: ADD_APP, payload: appSettings.Cmd });
+    else if (text === 'Log Off')
       dispatch({ type: POWER_OFF, payload: POWER_STATE.LOG_OFF });
-    else if (o === 'Turn Off Computer')
+    else if (text === 'Turn Off Computer')
       dispatch({ type: POWER_OFF, payload: POWER_STATE.TURN_OFF });
     else
       dispatch({
@@ -421,7 +425,7 @@ const ClippyWrapper = styled.div`
   @media (max-width: 768px) {
     bottom: 100px;
     right: 15px;
-    transform: scale(0.8);
+    transform: scale(0.5);
     transform-origin: bottom right;
   }
 `;
@@ -453,40 +457,57 @@ const wave = keyframes`
 
 const HeroText = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   z-index: 0;
   pointer-events: none;
   animation: ${fadeIn} 1s ease-out;
-  text-shadow:
-    2px 2px 4px rgba(0, 0, 0, 0.8),
+      2px 2px 4px rgba(0, 0, 0, 0.8),
     0 0 10px rgba(0, 0, 0, 0.5);
-  will-change: transform;
+  text-shadow:
+    1px 1px 2px rgba(0, 0, 0, 0.4),
+    0 0 5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    padding: 0 5%;
+  }
 `;
 
 const WaveEmoji = styled.span`
   display: inline-block;
-  font-size: 48px;
+  font-size: 36px;
   margin-right: 10px;
   animation: ${wave} 2.5s infinite;
   animation-delay: 0.5s;
+   text-shadow: none;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-right: 5px;
+  }
 `;
 
 const Greeting = styled.div`
   font-family: Tahoma, 'Noto Sans', sans-serif;
-  font-size: 64px;
+  font-size: 30px;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
   letter-spacing: -1px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   @media (max-width: 768px) {
-    font-size: 36px;
+    font-size: 20px;
+    margin-bottom: -10px;
   }
 `;
 
@@ -500,20 +521,20 @@ const RoleContainer = styled.div`
 
 const RoleText = styled.div`
   font-family: Tahoma, 'Noto Sans', sans-serif;
-  font-size: 32px;
+  font-size: 25px;
   font-weight: 400;
   color: #ffffff;
   border: 3px solid #ffffff;
-  padding: 8px 24px;
+  padding: 2px 5px;
   border-radius: 4px;
   backdrop-filter: blur(2px);
   min-width: 320px;
   text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 18px;
+    font-size: 10px;
     min-width: 220px;
-    padding: 6px 16px;
+    padding: 2px 10px;
   }
 `;
 

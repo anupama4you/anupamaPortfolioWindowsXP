@@ -91,6 +91,24 @@ const IconsContainer = styled.div`
   position: absolute;
   margin-top: 40px;
   margin-left: 40px;
+  padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 90px);
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-bottom: 120px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    gap: 15px;
+    width: calc(100% - 30px);
+  }
 `;
 
 const StyledIcon = styled(Icon)`
@@ -101,6 +119,11 @@ const StyledIcon = styled(Icon)`
   align-items: center;
   cursor: pointer;
 
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
   &__text__container {
     width: 100%;
     font-size: 11px;
@@ -109,6 +132,10 @@ const StyledIcon = styled(Icon)`
     margin-top: 6px;
     display: flex;
     justify-content: center;
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+    }
 
     &:before {
       content: '';
@@ -134,12 +161,22 @@ const StyledIcon = styled(Icon)`
     height: 30px;
     filter: ${({ isFocus, displayFocus }) =>
       isFocus && displayFocus ? 'drop-shadow(0 0 blue)' : ''};
+
+    @media (max-width: 768px) {
+      width: 35px;
+      height: 35px;
+    }
   }
   &__img {
     width: 30px;
     height: 30px;
     opacity: ${({ isFocus, displayFocus }) =>
       isFocus && displayFocus ? 0.5 : 1};
+
+    @media (max-width: 768px) {
+      width: 35px;
+      height: 35px;
+    }
   }
 `;
 

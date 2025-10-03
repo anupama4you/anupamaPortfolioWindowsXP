@@ -350,6 +350,7 @@ RESPONSE STYLE:
 
 Remember: You're here to educate, inspire, and help people understand the profound changes AI brings!`;
 
+console.log("Hello", geminiApiKey);
 const ai = new GoogleGenAI({apiKey: geminiApiKey});
             const result = await ai.models.generateContent({
                 model: "gemini-2.5-flash",

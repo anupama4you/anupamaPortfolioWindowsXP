@@ -34,7 +34,7 @@ function Paint({ onClose, isFocus }) {
 
     { id: 'text9', type: 'text', content: "I got the opportunity to work in", x: 30, y: 300, fontSize: 16, rotation: -1 },
     { id: 'text10', type: 'text', content: "Sri Lanka, Egypt and Australia 🌏", x: 30, y: 330, fontSize: 16, rotation: 1 },
-    { id: 'text11', type: 'text', content: "Currently living in Australia,", x: 30, y: 360, fontSize: 17, rotation: -1 },
+    { id: 'text11', type: 'text', content: "Currently living in Australia 🦘,", x: 30, y: 360, fontSize: 17, rotation: -1 },
     { id: 'text12', type: 'text', content: "open for freelance work! 💼✨", x: 30, y: 395, fontSize: 17, rotation: 1 },
 
     { id: 'text13', type: 'text', content: "I love traveling, exploring countries,", x: 30, y: 455, fontSize: 16, rotation: -1 },
@@ -84,8 +84,8 @@ function Paint({ onClose, isFocus }) {
     '#F39C12', '#95A5A6', '#000000', '#FFFFFF'
   ];
 
-  const canvasWidth = isMobile ? 540 : 900;
-  const canvasHeight = isMobile ? 450 : 750;
+  const canvasWidth = isMobile ? 600 : 900;
+  const canvasHeight = isMobile ? 700 : 1000;
 
   useEffect(() => {
     const canvas = canvasRef.current;
