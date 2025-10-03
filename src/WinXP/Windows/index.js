@@ -150,6 +150,18 @@ const StyledWindow = styled(Window)`
   flex-direction: column;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+
+  @media (max-width: 768px) {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    transform: none !important;
+    border-radius: 0 !important;
+    z-index: ${({ isFocus }) => (isFocus ? 9999 : -1)} !important;
+    display: ${({ show, isFocus }) => (show && isFocus ? 'flex' : 'none')} !important;
+  }
   .header__bg {
     background: ${({ isFocus }) =>
       isFocus
@@ -164,6 +176,10 @@ const StyledWindow = styled(Window)`
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     overflow: hidden;
+
+    @media (max-width: 768px) {
+      border-radius: 0 !important;
+    }
   }
   .header__bg:before {
     content: '';

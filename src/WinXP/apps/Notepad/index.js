@@ -268,7 +268,7 @@ export default function Notepad({ onClose }) {
   }
 
   const handleOpenResume = () => {
-    window.open('assets/resume/Resume-Anupama-Dilshan-emanate.pdf', '_blank', 'noopener,noreferrer');
+    window.open('assets/resume/Resume-Anupama-Dilshan.pdf', '_blank', 'noopener,noreferrer');
   };
 
   return (

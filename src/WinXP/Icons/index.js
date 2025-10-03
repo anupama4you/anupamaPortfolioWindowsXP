@@ -56,29 +56,129 @@ function Icon({
   measure,
 }) {
   const ref = useRef(null);
-  function _onMouseDown() {
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [initialPos, setInitialPos] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if mobile on mount
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Reset position and styles on mobile
+    if (isMobile && ref.current) {
+      ref.current.style.position = '';
+      ref.current.style.left = '';
+      ref.current.style.top = '';
+      ref.current.style.zIndex = '';
+      setIsDragging(false);
+    }
+  }, [isMobile]);
+
+  function _onMouseDown(e) {
     onMouseDown(id);
+
+    // Disable dragging on mobile
+    if (isMobile) return;
+
+    // Only start drag if holding for a moment or moving
+    const rect = ref.current.getBoundingClientRect();
+    setInitialPos({ x: rect.left, y: rect.top });
+    setDragOffset({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+
+    // Set a timeout to enable dragging after a brief hold
+    const dragTimer = setTimeout(() => {
+      setIsDragging(true);
+    }, 150);
+
+    const cleanup = () => {
+      clearTimeout(dragTimer);
+      document.removeEventListener('mouseup', cleanup);
+    };
+
+    document.addEventListener('mouseup', cleanup);
   }
+
   function _onDoubleClick() {
+    setIsDragging(false);
     onDoubleClick(component);
   }
+
   useEffect(() => {
     const target = ref.current;
     if (!target) return;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
+    const { left, top, width, height } = target.getBoundingClientRect();
     const posX = left + window.scrollX;
     const posY = top + window.scrollY;
     measure({ id, x: posX, y: posY, w: width, h: height });
   }, [id, measure]);
+
+  useEffect(() => {
+    if (!isDragging) {
+      // Reset z-index when not dragging
+      if (ref.current) {
+        ref.current.style.zIndex = '';
+      }
+      return;
+    }
+
+    const handleMouseMove = (e) => {
+      if (ref.current) {
+        const newX = e.clientX - dragOffset.x;
+        const newY = e.clientY - dragOffset.y;
+        ref.current.style.position = 'fixed';
+        ref.current.style.left = `${newX}px`;
+        ref.current.style.top = `${newY}px`;
+        ref.current.style.zIndex = '9999';
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging, dragOffset]);
+
+  // Handle click for mobile (single tap to open)
+  const handleClick = (e) => {
+    if (isMobile) {
+      e.preventDefault();
+      onDoubleClick(component);
+    }
+  };
+
   return (
     <div
       className={className}
       onMouseDown={_onMouseDown}
       onDoubleClick={_onDoubleClick}
+      onClick={handleClick}
       ref={ref}
+      style={{
+        cursor: isDragging ? 'grabbing' : 'pointer',
+      }}
     >
       <div className={`${className}__img__container`}>
-        <img src={icon} alt={title} className={`${className}__img`} />
+        <img src={icon} alt={title} className={`${className}__img`} draggable="false" />
       </div>
       <div className={`${className}__text__container`}>
         <div className={`${className}__text`}>{title}</div>

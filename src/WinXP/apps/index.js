@@ -22,6 +22,7 @@ import cmd from 'assets/windowsIcons/56(16x16).png';
 import cmdLarge from 'assets/windowsIcons/56(32x32).png';
 import CMD from './cmd';
 import outlookExpress from './outlookExpress';
+import ClippyChat from './ClippyChat';
 
 const gen = () => {
   let id = -1;
@@ -350,6 +351,25 @@ export const appSettings = {
     maximized: true,
     multiInstance: true,
   },
+  "ClippyChat": {
+    header: {
+      icon: outlook,
+      title: 'AI Expert Clippy',
+    },
+    component: ClippyChat,
+    defaultSize: {
+      width: 500,
+      height: 550,
+    },
+    defaultOffset: {
+      x: 900,
+      y: 150,
+    },
+    resizable: true,
+    minimized: false,
+    maximized: false,
+    multiInstance: false,
+  },
 };
 
-export { InternetExplorer, Minesweeper, ErrorBox, MyComputer, Notepad, CMD, Paint, outlookExpress };
+export { InternetExplorer, Minesweeper, ErrorBox, MyComputer, Notepad, CMD, Paint, outlookExpress, ClippyChat };

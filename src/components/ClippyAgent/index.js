@@ -31,7 +31,8 @@ export default function ClippyAgent({
     scale = 1,
     origin = 'bottom left',
     title = 'Clippy AI Assistant - Click me!',
-    geminiApiKey = process.env.REACT_APP_GEMINI_API_KEY || ''
+    geminiApiKey = process.env.REACT_APP_GEMINI_API_KEY || '',
+    onOpenChat = () => {}
 }) {
     // DOM refs
     const elRef = useRef(null);
@@ -260,12 +261,9 @@ export default function ClippyAgent({
     };
 
     const handleClippyClick = () => {
-        if (!showChat) {
-            play('Wave');
-            toggleChat();
-        } else {
-            play('GetAttention');
-        }
+        play('Wave');
+        setSpeechBubble(prev => ({ ...prev, show: false }));
+        onOpenChat();
     };
 
     const onInputFocus = () => {
@@ -411,77 +409,6 @@ const ai = new GoogleGenAI({apiKey: geminiApiKey});
 
     return (
         <ClippyAgentWrapper>
-            {/* Chat Interface */}
-            {showChat && (
-                <ChatInterface className={showChat ? 'chat-open' : ''}>
-                    <ChatHeader>
-                        <ChatHeaderContent>
-                            <ChatIcon>📎</ChatIcon>
-                            <ChatTitle>AI Expert Clippy</ChatTitle>
-                        </ChatHeaderContent>
-                        <CloseBtn onClick={toggleChat}>
-                            <span className="close-x">×</span>
-                        </CloseBtn>
-                    </ChatHeader>
-
-                    <ChatMessages ref={messagesContainerRef}>
-                        {messages.map((message, index) => (
-                            <Message
-                                key={index}
-                                className={message.type}
-                                onClick={() => message.type === 'suggestion' && handleSuggestionClick(message.content.replace('📌 ', ''))}
-                            >
-                                {message.type === 'clippy' && (
-                                    <MessageAvatar>
-                                        <img src="assets/clippy/dp.png" alt="Clippy" />
-                                    </MessageAvatar>
-                                )}
-                                <MessageContent className={message.type === 'suggestion' ? 'suggestion' : ''}>
-                                    {message.content}
-                                </MessageContent>
-                            </Message>
-                        ))}
-
-                        {isTyping && (
-                            <Message className="clippy typing">
-                                <MessageAvatar>
-                                    <img src="assets/clippy/dp.png" alt="Clippy" />
-                                </MessageAvatar>
-                                <MessageContent>
-                                    <TypingIndicator>
-                                        <span></span><span></span><span></span>
-                                    </TypingIndicator>
-                                </MessageContent>
-                            </Message>
-                        )}
-                    </ChatMessages>
-
-                    <ChatInputContainer>
-                        <ChatInput
-                            value={userInput}
-                            onChange={(e) => setUserInput(e.target.value)}
-                            onKeyPress={handleKeyPress}
-                            onFocus={onInputFocus}
-                            placeholder="Type your question here..."
-                            disabled={isTyping}
-                        />
-                        <SendBtn
-                            onClick={sendMessage}
-                            disabled={isTyping || !userInput.trim()}
-                        >
-                            <span className="send-icon">→</span>
-                        </SendBtn>
-                    </ChatInputContainer>
-
-                    <ChatStatusBar>
-                        <StatusText>
-                            {isTyping ? 'Clippy is typing...' : 'Ready'}
-                        </StatusText>
-                        <ResizeGrip />
-                    </ChatStatusBar>
-                </ChatInterface>
-            )}
-
             {/* Clippy Sprite */}
             <ClippyWrapper onClick={handleClippyClick}>
                 <ClippyGlow className={isActive ? 'active' : ''} />
@@ -662,18 +589,30 @@ const ChatInterface = styled.div`
     opacity: 1;
   }
 
-  @media (max-width: 480px) {
-    width: calc(100vw - 20px);
-    height: 70vh;
-    right: 10px;
-    bottom: 120px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    transform: none;
+    opacity: 1;
+
+    &.chat-open {
+      transform: none;
+      opacity: 1;
+    }
   }
 `;
 
 const ChatHeader = styled.div`
-  background: linear-gradient(to bottom, 
-    #0831D9 0%, 
-    #1660E8 50%, 
+  background: linear-gradient(to bottom,
+    #0831D9 0%,
+    #1660E8 50%,
     #0831D9 100%);
   color: white;
   padding: 4px 8px;
@@ -684,6 +623,10 @@ const ChatHeader = styled.div`
   font-size: 11px;
   font-weight: bold;
   border-bottom: 1px solid #000080;
+
+  @media (max-width: 768px) {
+    border-radius: 0 !important;
+  }
 `;
 
 const ChatHeaderContent = styled.div`

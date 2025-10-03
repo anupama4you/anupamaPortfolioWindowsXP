@@ -76,8 +76,8 @@ const reducer = (state, action = { type: '' }) => {
           state.apps.length > 1
             ? FOCUSING.WINDOW
             : state.icons.find(icon => icon.isFocus)
-            ? FOCUSING.ICON
-            : FOCUSING.DESKTOP,
+              ? FOCUSING.ICON
+              : FOCUSING.DESKTOP,
       };
     case FOCUS_APP: {
       const apps = state.apps.map(app =>
@@ -182,11 +182,11 @@ function WinXP() {
 
   // Typing animation state
   const roles = [
-    'Full-Stack Developer',
-    'ML Engineer',
     'Software Engineer',
-    'AI Enthusiast',
-    'Problem Solver'
+    'Full-Stack Developer',
+    'Web & Mobile App Developer',
+    'Cloud & DevOps Engineer',
+    'AI & Automation Specialist'
   ];
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
@@ -290,6 +290,8 @@ function WinXP() {
       dispatch({ type: ADD_APP, payload: appSettings.Paint });
     else if (text === 'Command Prompt' || text === 'Cmd')
       dispatch({ type: ADD_APP, payload: appSettings.Cmd });
+    else if (text === 'ClippyChat' || text === 'AI Expert Clippy')
+      dispatch({ type: ADD_APP, payload: appSettings.ClippyChat });
     else if (text === 'Log Off')
       dispatch({ type: POWER_OFF, payload: POWER_STATE.LOG_OFF });
     else if (text === 'Turn Off Computer')
@@ -371,7 +373,7 @@ function WinXP() {
         onClickMenuItem={onClickMenuItem}
       />
       <ClippyWrapper>
-        <ClippyAgent />
+        <ClippyAgent onOpenChat={() => onClickMenuItem('ClippyChat')} />
       </ClippyWrapper>
       {state.powerState !== POWER_STATE.START && (
         <Modal
