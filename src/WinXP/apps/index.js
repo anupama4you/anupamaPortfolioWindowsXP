@@ -149,14 +149,14 @@ export const defaultIconState = [
   {
     id: 4,
     icon: winamp,
-    title: 'Music Player',
+    title: 'Winamp',
     component: Winamp,
     isFocus: false,
   },
   {
     id: 5,
     icon: paintLarge,
-    title: 'My Life',
+    title: 'About Me',
     component: Paint,
     isFocus: false,
   },

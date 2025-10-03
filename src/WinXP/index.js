@@ -427,7 +427,7 @@ const ClippyWrapper = styled.div`
   @media (max-width: 768px) {
     bottom: 100px;
     right: 15px;
-    transform: scale(0.5);
+    transform: scale(0.9);
     transform-origin: bottom right;
   }
 `;

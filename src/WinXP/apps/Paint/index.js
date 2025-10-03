@@ -4,6 +4,8 @@ import styled, { keyframes } from 'styled-components';
 function Paint({ onClose, isFocus }) {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
+  const longPressTimerRef = useRef(null);
+const LONG_PRESS_MS = 600; // tweak to taste
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState('#2C3E50');
   const [brushSize, setBrushSize] = useState(2);
@@ -20,47 +22,47 @@ function Paint({ onClose, isFocus }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Base items data (for desktop 900x750 canvas)
+  // Base items data (for desktop 900x1000 canvas) - Professional Grid Layout
   const baseItems = [
-    // Story paragraphs - LEFT COLUMN
-    { id: 'text1', type: 'text', content: "I'm born and raised in Sri Lanka 🇱🇰", x: 30, y: 30, fontSize: 16, rotation: -1 },
-    { id: 'text2', type: 'text', content: "I loved being in front of the computer,", x: 30, y: 60, fontSize: 15, rotation: 0 },
-    { id: 'text3', type: 'text', content: "I was more curious and passionate into", x: 30, y: 90, fontSize: 15, rotation: 1 },
-    { id: 'text4', type: 'text', content: "how computer works and applications", x: 30, y: 120, fontSize: 15, rotation: -1 },
-    { id: 'text5', type: 'text', content: "built since childhood. I started", x: 30, y: 150, fontSize: 15, rotation: 0 },
-    { id: 'text6', type: 'text', content: "experimenting java standalone apps.", x: 30, y: 180, fontSize: 15, rotation: 1 },
-    { id: 'text7', type: 'text', content: "Through bachelors I gained", x: 30, y: 210, fontSize: 15, rotation: -1 },
-    { id: 'text8', type: 'text', content: "educational foundation for that 🎓", x: 30, y: 240, fontSize: 15, rotation: 1 },
+    // Header
+    { id: 'title', type: 'text', content: "About ME 🌟", x: 330, y: 25, fontSize: 28, rotation: 0, fontWeight: 'bold' },
 
-    { id: 'text9', type: 'text', content: "I got the opportunity to work in", x: 30, y: 300, fontSize: 16, rotation: -1 },
-    { id: 'text10', type: 'text', content: "Sri Lanka, Egypt and Australia 🌏", x: 30, y: 330, fontSize: 16, rotation: 1 },
-    { id: 'text11', type: 'text', content: "Currently living in Australia 🦘,", x: 30, y: 360, fontSize: 17, rotation: -1 },
-    { id: 'text12', type: 'text', content: "open for freelance work! 💼✨", x: 30, y: 395, fontSize: 17, rotation: 1 },
+    // Row 1: Early Days & Education
+    { id: 'section1', type: 'text', content: "🇱🇰 Early Days", x: 40, y: 80, fontSize: 18, rotation: 0, fontWeight: 'bold' },
+    { id: 'img1', type: 'image', src: 'assets/mylife/graduation.jpg', x: 40, y: 120, width: 180, height: 180, rotation: -2, label: 'Graduation' },
+    { id: 'text1', type: 'text', content: "Born and raised in Sri Lanka, I've always", x: 250, y: 130, fontSize: 14, rotation: 0 },
+    { id: 'text2', type: 'text', content: "been passionate about computers. Started", x: 250, y: 155, fontSize: 14, rotation: 0 },
+    { id: 'text3', type: 'text', content: "experimenting with Java apps as a kid,", x: 250, y: 180, fontSize: 14, rotation: 0 },
+    { id: 'text4', type: 'text', content: "and built my foundation through my", x: 250, y: 205, fontSize: 14, rotation: 0 },
+    { id: 'text5', type: 'text', content: "bachelor's degree in CS 🎓", x: 250, y: 230, fontSize: 14, rotation: 0 },
+    { id: 'img2', type: 'image', src: 'assets/mylife/it.jpg', x: 540, y: 110, width: 160, height: 160, rotation: 2, label: 'Tech Life' },
+    { id: 'img9', type: 'image', src: 'assets/mylife/leader2.jpeg', x: 720, y: 120, width: 140, height: 140, rotation: -1, label: 'Learning' },
 
-    { id: 'text13', type: 'text', content: "I love traveling, exploring countries,", x: 30, y: 455, fontSize: 16, rotation: -1 },
-    { id: 'text14', type: 'text', content: "taking videos, creating vlogs ✈️📹", x: 30, y: 485, fontSize: 16, rotation: 1 },
-    { id: 'text15', type: 'text', content: "Love to inspire people through my", x: 30, y: 515, fontSize: 15, rotation: -1 },
-    { id: 'text16', type: 'text', content: "leadership experience.", x: 30, y: 545, fontSize: 15, rotation: 0 },
+    // Row 2: Career & Travel
+    { id: 'section2', type: 'text', content: "🌏 Global Experience", x: 40, y: 340, fontSize: 18, rotation: 0, fontWeight: 'bold' },
+    { id: 'text6', type: 'text', content: "I've had the opportunity to work across", x: 40, y: 380, fontSize: 14, rotation: 0 },
+    { id: 'text7', type: 'text', content: "three countries: Sri Lanka, Egypt, and", x: 40, y: 405, fontSize: 14, rotation: 0 },
+    { id: 'text8', type: 'text', content: "Australia. Currently based in Adelaide 🦘", x: 40, y: 430, fontSize: 14, rotation: 0 },
+    { id: 'text9', type: 'text', content: "and open for freelance opportunities!", x: 40, y: 455, fontSize: 14, rotation: 0 },
+    { id: 'text10', type: 'text', content: "I love traveling & creating vlogs ✈️📹", x: 40, y: 480, fontSize: 14, rotation: 0 },
+    { id: 'img3', type: 'image', src: 'assets/mylife/travel.JPG', x: 340, y: 360, width: 180, height: 180, rotation: 1, label: 'Exploring' },
+    { id: 'img4', type: 'image', src: 'assets/mylife/travel2.JPG', x: 550, y: 370, width: 160, height: 160, rotation: -2, label: 'Adventures' },
+    { id: 'img5', type: 'image', src: 'assets/mylife/people.jpg', x: 730, y: 365, width: 140, height: 140, rotation: 2, label: 'Team' },
 
-    { id: 'text17', type: 'text', content: "I love cricket! Opening batsman", x: 30, y: 605, fontSize: 16, rotation: 1 },
-    { id: 'text18', type: 'text', content: "and keeper 🏏 Recently became", x: 30, y: 635, fontSize: 16, rotation: -1 },
-    { id: 'text19', type: 'text', content: "the captain for the Ceylon Strikers", x: 30, y: 665, fontSize: 15, rotation: 1 },
+    // Row 3: Leadership & Sports
+    { id: 'section3', type: 'text', content: "💼 Leadership & Sports", x: 40, y: 590, fontSize: 18, rotation: 0, fontWeight: 'bold' },
+    { id: 'img6', type: 'image', src: 'assets/mylife/leader.jpeg', x: 40, y: 630, width: 160, height: 160, rotation: -1, label: 'Leadership' },
+    { id: 'text11', type: 'text', content: "Passionate about inspiring people through", x: 230, y: 640, fontSize: 14, rotation: 0 },
+    { id: 'text12', type: 'text', content: "leadership. I'm an opening batsman and", x: 230, y: 665, fontSize: 14, rotation: 0 },
+    { id: 'text13', type: 'text', content: "wicketkeeper 🏏 Recently became captain", x: 230, y: 690, fontSize: 14, rotation: 0 },
+    { id: 'text14', type: 'text', content: "of Ceylon Strikers cricket team!", x: 230, y: 715, fontSize: 14, rotation: 0 },
+    { id: 'img7', type: 'image', src: 'assets/mylife/cricket.JPG', x: 530, y: 625, width: 170, height: 170, rotation: 2, label: 'Cricket' },
+    { id: 'img8', type: 'image', src: 'assets/mylife/gym.JPG', x: 720, y: 630, width: 150, height: 150, rotation: -1, label: 'Fitness' },
 
-    { id: 'text20', type: 'text', content: "Never miss the gym sessions! 💪", x: 30, y: 720, fontSize: 17, rotation: -1 },
-
-    // Images - RIGHT COLUMN (polaroid style)
-    { id: 'img1', type: 'image', src: 'assets/mylife/graduation.jpg', x: 500, y: 30, width: 170, height: 170, rotation: -3, label: 'Graduation Day' },
-    { id: 'img2', type: 'image', src: 'assets/mylife/it.jpg', x: 700, y: 40, width: 150, height: 150, rotation: 2, label: 'Tech Life' },
-
-    { id: 'img3', type: 'image', src: 'assets/mylife/travel.JPG', x: 500, y: 240, width: 160, height: 160, rotation: 2, label: 'Exploring' },
-    { id: 'img4', type: 'image', src: 'assets/mylife/travel2.JPG', x: 690, y: 250, width: 160, height: 160, rotation: -2, label: 'Adventures' },
-
-    { id: 'img5', type: 'image', src: 'assets/mylife/leader.jpeg', x: 500, y: 450, width: 150, height: 150, rotation: 3, label: 'Leadership' },
-    { id: 'img6', type: 'image', src: 'assets/mylife/people.jpg', x: 680, y: 445, width: 150, height: 150, rotation: -2, label: 'Team Spirit' },
-
-    { id: 'img7', type: 'image', src: 'assets/mylife/cricket.JPG', x: 500, y: 640, width: 170, height: 170, rotation: -1, label: 'Cricket Love' },
-    { id: 'img8', type: 'image', src: 'assets/mylife/gym.JPG', x: 700, y: 650, width: 150, height: 150, rotation: 2, label: 'Fitness' },
-    { id: 'img9', type: 'image', src: 'assets/mylife/leader2.jpeg', x: 600, y: 490, width: 60, height: 60, rotation: -5, label: '✨' },
+    // Row 4: Fitness
+    { id: 'section4', type: 'text', content: "💪 Fitness Journey", x: 40, y: 840, fontSize: 18, rotation: 0, fontWeight: 'bold' },
+    { id: 'text15', type: 'text', content: "Never miss a gym session! Fitness is a crucial part", x: 40, y: 880, fontSize: 14, rotation: 0 },
+    { id: 'text16', type: 'text', content: "of my daily routine and keeps me energized 🏋️‍♂️", x: 40, y: 905, fontSize: 14, rotation: 0 },
   ];
 
   const [items, setItems] = useState(baseItems);
@@ -95,6 +97,26 @@ function Paint({ onClose, isFocus }) {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
   }, [isMobile]);
+
+  const handleItemTouchStart = (e, item) => {
+  if (!isMobile) return;
+  e.stopPropagation();
+  // start dragging logic if you want, but we’ll prioritize long-press
+  longPressTimerRef.current = setTimeout(() => {
+    if (navigator?.vibrate) navigator.vibrate(10);
+    if (window.confirm('Remove this item?')) {
+      setItems(prev => prev.filter(i => i.id !== item.id));
+    }
+  }, LONG_PRESS_MS);
+};
+
+const handleItemTouchEnd = () => {
+  if (longPressTimerRef.current) {
+    clearTimeout(longPressTimerRef.current);
+    longPressTimerRef.current = null;
+  }
+};
+
 
   const startDrawing = (e) => {
     if (!isFocus || draggedItem) return;
@@ -278,13 +300,18 @@ function Paint({ onClose, isFocus }) {
                   left: item.x,
                   top: item.y,
                   fontSize: item.fontSize,
+                  fontWeight: item.fontWeight || '600',
                   transform: `rotate(${item.rotation}deg)`,
                   cursor: draggedItem?.id === item.id ? 'grabbing' : 'grab'
                 }}
                 onMouseDown={(e) => handleItemMouseDown(e, item)}
+  onTouchStart={(e) => handleItemTouchStart(e, item)}
+  onTouchEnd={handleItemTouchEnd}
               >
                 {item.content}
-                <RemoveBtn onClick={(e) => removeItem(e, item.id)}>×</RemoveBtn>
+                {!isMobile && (
+  <RemoveBtn onClick={(e) => removeItem(e, item.id)}>×</RemoveBtn>
+)}
               </DraggableText>
             ) : (
               <PolaroidImage
@@ -296,6 +323,8 @@ function Paint({ onClose, isFocus }) {
                   cursor: draggedItem?.id === item.id ? 'grabbing' : 'grab'
                 }}
                 onMouseDown={(e) => handleItemMouseDown(e, item)}
+  onTouchStart={(e) => handleItemTouchStart(e, item)}
+  onTouchEnd={handleItemTouchEnd}
               >
                 <img
                   src={item.src}
@@ -304,7 +333,9 @@ function Paint({ onClose, isFocus }) {
                   draggable={false}
                 />
                 <ImageLabel>{item.label}</ImageLabel>
-                <RemoveBtn onClick={(e) => removeItem(e, item.id)}>×</RemoveBtn>
+                {!isMobile && (
+  <RemoveBtn onClick={(e) => removeItem(e, item.id)}>×</RemoveBtn>
+)}
               </PolaroidImage>
             )
           ))}
